@@ -36,7 +36,7 @@ public class PrincipalView extends javax.swing.JFrame {
         jLabel1.setText("Diccionario Técnico");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 240, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantilla.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iPhone.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
