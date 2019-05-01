@@ -130,7 +130,7 @@ public class Glosario {
                 for (int i = 0; i < terminos.size(); i++) {
                     System.out.println(terminos.get(i).obtExpresion());
                     System.out.println(terminos.get(i).obtSignificado());
-                    System.out.println(terminos.get(i).getCategorias().get(i));
+                    System.out.println(terminos.get(i).getCategorias().get(i).getClass().getSimpleName());
                 }
             break;
             case 2:
