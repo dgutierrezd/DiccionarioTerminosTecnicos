@@ -5,10 +5,16 @@
  */
 package ELementos;
 
+import GUI.Agregar;
+import GUI.Editar;
+import GUI.PrincipalView;
+import GUI.Remover;
+import GUI.Ver;
 import IOElements.EscritorGlosarioSerializado;
 import IOElements.LectorGlosarioSerializado;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JDialog;
 
 /**
  *
@@ -17,14 +23,17 @@ import java.util.ArrayList;
 public class Glosario {
     
     private String rutaArchivo;
-    private ArrayList<String> terminos = new ArrayList<>();
+    private ArrayList<Termino> terminos = new ArrayList<>();
     
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        EscritorGlosarioSerializado escritorGlosarioSerializado = new EscritorGlosarioSerializado();
-        LectorGlosarioSerializado lectorGlosarioSerializado = new LectorGlosarioSerializado();
+        Glosario glosario = new Glosario();
+        PrincipalView vistaPrincipal = new PrincipalView(glosario);
         
-        escritorGlosarioSerializado.determinarCategoria();
-        lectorGlosarioSerializado.conocerCategoria();
+//        EscritorGlosarioSerializado escritorGlosarioSerializado = new EscritorGlosarioSerializado();
+//        LectorGlosarioSerializado lectorGlosarioSerializado = new LectorGlosarioSerializado();
+//        
+//        escritorGlosarioSerializado.determinarCategoria();
+//        lectorGlosarioSerializado.conocerCategoria();
         
     }
     
@@ -67,5 +76,26 @@ public class Glosario {
         }
         System.out.println(rutaArchivo);
         return rutaArchivo;
+    }
+    
+    
+    public void determinarOpcionesVista(PrincipalView vistaPrincipal,int opcion){
+        
+        switch(opcion){
+            case 1:
+                JDialog dialogoVer = new Ver(vistaPrincipal, true);
+            break;
+            case 2:
+                JDialog dialogoAgregar = new Agregar(vistaPrincipal, true);
+            break;
+            case 3:
+                JDialog dialogoEditar = new Editar(vistaPrincipal, true);
+            break;
+            case 4:
+                JDialog dialogoRemover = new Remover(vistaPrincipal, true);
+            break;
+            
+            
+        }
     }
 }
