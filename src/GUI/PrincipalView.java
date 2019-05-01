@@ -137,6 +137,11 @@ public class PrincipalView extends javax.swing.JFrame {
         glosario.determinarOpcionesVista(this, estado);
     }//GEN-LAST:event_btnRemoverActionPerformed
 
+    public Glosario getGlosario() {
+        return glosario;
+    }
+
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

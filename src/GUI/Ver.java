@@ -18,8 +18,8 @@ public class Ver extends javax.swing.JDialog {
     /**
      * Creates new form Ver
      */
-    public Ver(java.awt.Frame parent, boolean modal) {
-        super(parent, true);
+    public Ver(PrincipalView vistaPrincipal, boolean modal) {
+        super(vistaPrincipal, true);
         initComponents();
          Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
         AWTUtilities.setWindowShape(this, forma);        

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Termino {
     private String expresion;
     private String significado;
-    private ArrayList<String> categorias = new ArrayList<>();
+    private ArrayList<Categoria> categorias = new ArrayList<>();
 
     public Termino(String expresion, String significado) {
         ponExpresion(expresion);
@@ -36,4 +36,15 @@ public class Termino {
     public String obtSignificado() {
             return this.significado;
     }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(ArrayList<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+
+    
+    
 }

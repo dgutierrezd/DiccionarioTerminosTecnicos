@@ -9,6 +9,6 @@ package ELementos;
  *
  * @author dgutierrezd
  */
-public class ProgramacionMovil {
+public class ProgramacionMovil extends Categoria{
     
 }

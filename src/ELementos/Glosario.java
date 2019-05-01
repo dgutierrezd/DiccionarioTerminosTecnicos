@@ -94,8 +94,48 @@ public class Glosario {
             case 4:
                 JDialog dialogoRemover = new Remover(vistaPrincipal, true);
             break;
-            
-            
+        }
+    }
+    
+    public void determinarOpcionesDialogo(JDialog dialogo,int opcion,String expresion,String descripcion,String categoria){
+        switch(opcion){
+            case 1:
+                Categoria newCategoria = null;
+                Termino newTermino = new Termino(expresion, descripcion);
+                switch(categoria){
+                    case "Sistemas Distribuidos":
+                        newCategoria = new SistemasDistribuidos();
+                    break;
+                    case "Sistemas Embebidos":
+                        newCategoria = new SistemasEmbeidos();
+                    break;
+                    case "Bases de Datos":
+                        newCategoria = new BasesDeDatos();
+                    break;
+                    case "Redes":
+                        newCategoria = new Redes();
+                    break;
+                    case "Programación Orientada a Objetos":
+                        newCategoria = new ProgramacionOrientadaAObjetos();
+                    break;
+                    case "Programación Móvil":
+                        newCategoria = new ProgramacionMovil();
+                    break;
+                    case "Programación Web":
+                        newCategoria = new ProgramacionWeb();
+                    break;
+                }
+                newTermino.getCategorias().add(newCategoria);
+                this.terminos.add(newTermino);
+                for (int i = 0; i < terminos.size(); i++) {
+                    System.out.println(terminos.get(i).obtExpresion());
+                    System.out.println(terminos.get(i).obtSignificado());
+                    System.out.println(terminos.get(i).getCategorias().get(i));
+                }
+            break;
+            case 2:
+                dialogo.dispose();
+            break;
         }
     }
 }
