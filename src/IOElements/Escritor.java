@@ -5,6 +5,7 @@
  */
 package IOElements;
 
+import ELementos.Termino;
 import java.io.IOException;
 
 /**
@@ -12,5 +13,5 @@ import java.io.IOException;
  * @author dgutierrezd
  */
 public interface Escritor {
-    public void escribirObjetos(String categoria, String expresion, String significado) throws IOException, ClassNotFoundException ;
+    public void escribirObjetos(Termino termino) throws IOException, ClassNotFoundException ;
 }

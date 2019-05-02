@@ -23,15 +23,13 @@ public class LectorGlosarioSerializado implements Lector {
     // La categoría se lee en la Vista.
     @Override
     public void leerObjetos(String categoria) throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream(glosario.determinarRuta(categoria));
+        FileInputStream fis = new FileInputStream(categoria + ".datos");
         
         ObjectInputStream ois = new ObjectInputStream(fis);
         
-        Termino recuperada1 = (Termino) ois.readObject();
-        Termino recuperada2 = (Termino) ois.readObject();
+        Termino recuperada = (Termino) ois.readObject();
         
-        System.out.println("Palabra: " + recuperada1.obtExpresion() + "; Significado: " + recuperada1.obtSignificado());
-        System.out.println("Palabra: " + recuperada2.obtExpresion() + "; Significado: " + recuperada2.obtSignificado());
+        System.out.println("Palabra: " + recuperada.obtExpresion() + "; Significado: " + recuperada.obtSignificado());
     }
     
     // Éste método va en la vista.
