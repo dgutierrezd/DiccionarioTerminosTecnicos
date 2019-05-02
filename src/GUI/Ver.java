@@ -5,15 +5,22 @@
  */
 package GUI;
 
+import ELementos.Glosario;
 import com.sun.awt.AWTUtilities;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ASUS
  */
 public class Ver extends javax.swing.JDialog {
+    private Glosario glosario;
+    private int estado;
 
     /**
      * Creates new form Ver
@@ -40,6 +47,7 @@ public class Ver extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnVer = new javax.swing.JButton();
+        txtCategoria = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -58,7 +66,7 @@ public class Ver extends javax.swing.JDialog {
         jButton1.setText("Salir");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -73,7 +81,10 @@ public class Ver extends javax.swing.JDialog {
                 btnVerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
+
+        txtCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona la categoría que quieres ver", "Sistemas Distribuidos", "Sistemas Embebidos", "Bases de Datos", "Redes", "Programación Orientada a Objetos", "Programación Móvil", "Programación Web" }));
+        getContentPane().add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -86,7 +97,18 @@ public class Ver extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        // TODO add your handling code here:
+        estado = 1;
+        // try {
+            if(!(txtCategoria.getSelectedIndex() == 0)) {
+                // glosario.determinarOpcionesVer(this, estado, (String) txtCategoria.getSelectedItem());
+            } else {
+                JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
+            }    
+//        } catch (IOException ex) {
+//            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        // }
     }//GEN-LAST:event_btnVerActionPerformed
 
     
@@ -97,5 +119,6 @@ public class Ver extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> txtCategoria;
     // End of variables declaration//GEN-END:variables
 }

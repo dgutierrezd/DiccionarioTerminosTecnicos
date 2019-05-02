@@ -20,16 +20,11 @@ public class EscritorGlosarioSerializado implements Escritor {
     
     Glosario  glosario = new Glosario();
     
-//    // Este método va en la vista.
-//    public void determinarCategoria() throws IOException, FileNotFoundException, ClassNotFoundException {
-//        escribirObjetos("Sistemas Distribuidos", nu);
-//    }
-
     @Override
     public void escribirObjetos(Termino termino) throws IOException, ClassNotFoundException  {
         // Termino termino = new Termino(expresion, significado);
         
-        FileOutputStream fos = new FileOutputStream("TerminosGuardados\\"+termino.obtExpresion() + ".datos");
+        FileOutputStream fos = new FileOutputStream("TerminosGuardados/" + termino.obtExpresion() + ".datos");
         
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         

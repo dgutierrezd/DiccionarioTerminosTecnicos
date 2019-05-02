@@ -12,6 +12,7 @@ import GUI.Remover;
 import GUI.Ver;
 import IOElements.EscritorGlosarioSerializado;
 import IOElements.LectorGlosarioSerializado;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JDialog;
@@ -28,56 +29,7 @@ public class Glosario {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Glosario glosario = new Glosario();
         PrincipalView vistaPrincipal = new PrincipalView(glosario);
-        
-//        EscritorGlosarioSerializado escritorGlosarioSerializado = new EscritorGlosarioSerializado();
-//        LectorGlosarioSerializado lectorGlosarioSerializado = new LectorGlosarioSerializado();
-//        
-//        escritorGlosarioSerializado.determinarCategoria();
-//        lectorGlosarioSerializado.conocerCategoria();
-        
     }
-    
-    public String determinarRuta(String categoria) {
-        
-        switch(categoria) {
-            case "Sistemas Distribuidos":
-                rutaArchivo = "distribuidos.datos";
-            break;
-            
-            case "Sistemas Embebidos":
-                rutaArchivo = "embeidos.datos";
-            break;
-            
-            case "Bases de Datos":
-                rutaArchivo = "basesDatos.datos";
-            break;
-            
-            case "Redes":
-                rutaArchivo = "redes.datos";
-            break;
-            
-            case "Programación Orientada a Objetos":
-                rutaArchivo = "poo.datos";
-            break;
-            
-            case "Programación Móvil":
-                rutaArchivo = "movil.datos";
-            break;
-            
-            case "Programación Web":
-                rutaArchivo = "web.datos";
-            break;
-            
-            default:
-                System.out.println("No existe el archivo.");
-                // En este proyecto no he implementado excepciones.
-                // throw new categoriaNoEncontrada
-                
-        }
-        System.out.println(rutaArchivo);
-        return rutaArchivo;
-    }
-    
     
     public void determinarOpcionesVista(PrincipalView vistaPrincipal,int opcion){
         
@@ -100,7 +52,6 @@ public class Glosario {
     public void determinarOpcionesAgregar(JDialog dialogo,int opcion,String expresion,String significado,String categoria) throws IOException, ClassNotFoundException{
         switch(opcion){
             case 1:
-                EscritorGlosarioSerializado escritorGlosarioSerializado = new EscritorGlosarioSerializado();
                 Categoria newCategoria = null;
                 Termino newTermino = new Termino(expresion, significado);
                 switch(categoria){
@@ -128,8 +79,9 @@ public class Glosario {
                 }
                 newTermino.getCategorias().add(newCategoria);
                 this.terminos.add(newTermino);
-                System.out.println(terminos.size());
-                escritorGlosarioSerializado.escribirObjetos(newTermino);
+                escribirSerializable(newTermino);
+                leerSerializable(newTermino.obtExpresion());
+                
             break;
             case 2:
                 dialogo.dispose();
@@ -143,5 +95,23 @@ public class Glosario {
             }
             
         }
+    }
+    
+    public void determinarOpcionesVer(JDialog dialog, int opcion, String ruta) throws IOException, FileNotFoundException, ClassNotFoundException {
+        switch(opcion) {
+            case 1:
+                leerSerializable(ruta);
+            break;
+        }
+    }
+    
+    public void escribirSerializable(Termino termino) throws IOException, ClassNotFoundException {
+        EscritorGlosarioSerializado escritorGlosarioSerializado = new EscritorGlosarioSerializado();
+        escritorGlosarioSerializado.escribirObjetos(termino);
+    }
+    
+    public void leerSerializable(String expresion) throws IOException, FileNotFoundException, ClassNotFoundException {
+        LectorGlosarioSerializado lectorGlosarioSerializado = new LectorGlosarioSerializado();
+        lectorGlosarioSerializado.leerObjetos(expresion);
     }
 }

@@ -137,10 +137,8 @@ public class Agregar extends javax.swing.JDialog {
                 glosario.determinarOpcionesAgregar(this, estado, txtExpresion.getText(), txtDescripcion.getText(), (String) txtCategoria.getSelectedItem());
                 limpiarTxt();
             }else{
-                throw new NullPointerException();
+                JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
             }
-        }catch(NullPointerException np){
-            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
