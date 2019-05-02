@@ -97,11 +97,10 @@ public class Glosario {
         }
     }
     
-    public void determinarOpcionesDialogo(JDialog dialogo,int opcion,String expresion,String significado,String categoria) throws IOException, ClassNotFoundException{
+    public void determinarOpcionesAgregar(JDialog dialogo,int opcion,String expresion,String significado,String categoria) throws IOException, ClassNotFoundException{
         switch(opcion){
             case 1:
                 EscritorGlosarioSerializado escritorGlosarioSerializado = new EscritorGlosarioSerializado();
-                LectorGlosarioSerializado lectorGlosarioSerializado = new LectorGlosarioSerializado();
                 Categoria newCategoria = null;
                 Termino newTermino = new Termino(expresion, significado);
                 switch(categoria){
@@ -129,6 +128,7 @@ public class Glosario {
                 }
                 newTermino.getCategorias().add(newCategoria);
                 this.terminos.add(newTermino);
+                System.out.println(terminos.size());
                 escritorGlosarioSerializado.escribirObjetos(newTermino);
             break;
             case 2:
