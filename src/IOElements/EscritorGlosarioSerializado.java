@@ -29,7 +29,7 @@ public class EscritorGlosarioSerializado implements Escritor {
     public void escribirObjetos(Termino termino) throws IOException, ClassNotFoundException  {
         // Termino termino = new Termino(expresion, significado);
         
-        FileOutputStream fos = new FileOutputStream(termino.obtExpresion() + ".datos");
+        FileOutputStream fos = new FileOutputStream("TerminosGuardados\\"+termino.obtExpresion() + ".datos");
         
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         

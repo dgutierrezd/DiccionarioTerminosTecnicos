@@ -5,13 +5,14 @@
  */
 package ELementos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author ASUS
  */
-public class Termino {
+public class Termino implements Serializable{
     private String expresion;
     private String significado;
     private ArrayList<Categoria> categorias = new ArrayList<>();

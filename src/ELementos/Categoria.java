@@ -5,10 +5,12 @@
  */
 package ELementos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dgutierrezd
  */
-public abstract class Categoria {
+public abstract class Categoria implements Serializable {
     
 }
