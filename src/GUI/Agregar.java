@@ -11,6 +11,7 @@ import java.awt.Frame;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,7 +43,6 @@ public class Agregar extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnVer = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -52,6 +52,7 @@ public class Agregar extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtCategoria = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -61,12 +62,9 @@ public class Agregar extends javax.swing.JDialog {
         jLabel1.setText("Diccionario Técnico");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 240, 60));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 30, 50));
-
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Salir");
+        jButton1.setText("Volver");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -79,6 +77,7 @@ public class Agregar extends javax.swing.JDialog {
 
         btnVer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnVer.setText("Agregar");
+        btnVer.setContentAreaFilled(false);
         btnVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerActionPerformed(evt);
@@ -118,6 +117,9 @@ public class Agregar extends javax.swing.JDialog {
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 30, 50));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -127,10 +129,24 @@ public class Agregar extends javax.swing.JDialog {
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
         estado = 1;
-        glosario.determinarOpcionesDialogo(this, estado, txtExpresion.getText(), txtDescripcion.getText(), (String) txtCategoria.getSelectedItem());
+        try{
+            if(!(txtExpresion.getText().equals("") || txtDescripcion.getText().equals("") || txtCategoria.getSelectedIndex() == 0)){
+                glosario.determinarOpcionesDialogo(this, estado, txtExpresion.getText(), txtDescripcion.getText(), (String) txtCategoria.getSelectedItem());
+                limpiarTxt();
+            }else{
+                throw new NullPointerException();
+            }
+        }catch(NullPointerException np){
+            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
+        }
+        
     }//GEN-LAST:event_btnVerActionPerformed
 
-    
+    public void limpiarTxt(){
+        txtExpresion.setText("");
+        txtDescripcion.setText("");
+        txtCategoria.setSelectedIndex(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVer;

@@ -127,15 +127,19 @@ public class Glosario {
                 }
                 newTermino.getCategorias().add(newCategoria);
                 this.terminos.add(newTermino);
-                for (int i = 0; i < terminos.size(); i++) {
-                    System.out.println(terminos.get(i).obtExpresion());
-                    System.out.println(terminos.get(i).obtSignificado());
-                    System.out.println(terminos.get(i).getCategorias().get(i).getClass().getSimpleName());
-                }
+                
             break;
             case 2:
                 dialogo.dispose();
             break;
+        }
+        for (int i = 0; i < terminos.size(); i++) {
+            System.out.println(terminos.get(i).obtExpresion());
+            System.out.println(terminos.get(i).obtSignificado());
+            for (int j = 0; j < terminos.get(i).getCategorias().size(); j++) {
+                System.out.println(terminos.get(i).getCategorias().get(j).getClass().getSimpleName());
+            }
+            
         }
     }
 }
