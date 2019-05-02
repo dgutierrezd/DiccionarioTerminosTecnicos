@@ -10,6 +10,9 @@ import com.sun.awt.AWTUtilities;
 import java.awt.Frame;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -136,8 +139,12 @@ public class Agregar extends javax.swing.JDialog {
             }else{
                 throw new NullPointerException();
             }
-        }catch(NullPointerException np){
-            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
+        //}catch(NullPointerException np){
+          //  JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
         }
         
     }//GEN-LAST:event_btnVerActionPerformed

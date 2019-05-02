@@ -16,24 +16,23 @@ import ELementos.Glosario;
  *
  * @author dgutierrezd
  */
-public class EscritorGlosarioSerializado {
+public class EscritorGlosarioSerializado implements Escritor {
     
     Glosario  glosario = new Glosario();
     
-    public void escribirObjetos(String categoria) throws IOException, ClassNotFoundException {
-        Termino terminoUno = new Termino("POO", "Programcion Orientada a Objetos");
-        Termino terminoDos = new Termino("MVC", "Modelo Vista Controlador");
+//    // Este método va en la vista.
+//    public void determinarCategoria() throws IOException, FileNotFoundException, ClassNotFoundException {
+//        escribirObjetos("Sistemas Distribuidos", nu);
+//    }
+
+    @Override
+    public void escribirObjetos(String categoria, String expresion, String significado) throws IOException, ClassNotFoundException  {
+        Termino termino = new Termino(expresion, significado);
         
-        FileOutputStream fos = new FileOutputStream(glosario.determinarRuta(categoria));
+        FileOutputStream fos = new FileOutputStream(expresion + ".datos");
         
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         
-        oos.writeObject(terminoUno);
-        oos.writeObject(terminoDos);
-    }
-    
-    // Este método va en la vista.
-    public void determinarCategoria() throws IOException, FileNotFoundException, ClassNotFoundException {
-        escribirObjetos("Sistemas Distribuidos");
+        oos.writeObject(termino);
     }
 }

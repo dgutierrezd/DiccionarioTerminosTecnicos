@@ -16,11 +16,12 @@ import ELementos.Glosario;
  *
  * @author dgutierrezd
  */
-public class LectorGlosarioSerializado {
+public class LectorGlosarioSerializado implements Lector {
     
     Glosario  glosario = new Glosario();
     
     // La categoría se lee en la Vista.
+    @Override
     public void leerObjetos(String categoria) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(glosario.determinarRuta(categoria));
         
