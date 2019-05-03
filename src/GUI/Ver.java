@@ -67,6 +67,7 @@ public class Ver extends javax.swing.JDialog {
         tablaDatos = new javax.swing.JTable();
         btnVerTermino = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -103,7 +104,7 @@ public class Ver extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 60, 70));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 60, 70));
 
         jScrollPane2.setFocusable(false);
         jScrollPane2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -135,7 +136,7 @@ public class Ver extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(tablaDatos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 230, 290));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 230, 290));
 
         btnVerTermino.setText("Ver");
         btnVerTermino.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +144,7 @@ public class Ver extends javax.swing.JDialog {
                 btnVerTerminoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVerTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, 100, 40));
+        getContentPane().add(btnVerTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 100, 40));
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit (1).png"))); // NOI18N
@@ -155,7 +156,10 @@ public class Ver extends javax.swing.JDialog {
                 btnEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, 40, 30));
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 560, 40, 30));
+
+        jLabel4.setText("Selecciona un término.");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -194,6 +198,8 @@ public class Ver extends javax.swing.JDialog {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IndexOutOfBoundsException iobe) {
+            JOptionPane.showMessageDialog(null, "No hay ningún término para ver.");
         }
     }//GEN-LAST:event_btnVerTerminoActionPerformed
 
@@ -207,6 +213,8 @@ public class Ver extends javax.swing.JDialog {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IndexOutOfBoundsException iobe) {
+            JOptionPane.showMessageDialog(null, "No hay ningún término para editar.");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
     
@@ -230,6 +238,7 @@ public class Ver extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaDatos;
     // End of variables declaration//GEN-END:variables
