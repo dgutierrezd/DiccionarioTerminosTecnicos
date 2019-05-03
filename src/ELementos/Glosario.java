@@ -6,7 +6,7 @@
 package ELementos;
 
 import GUI.Agregar;
-import GUI.Editar;
+import GUI.VerTermino;
 import GUI.PrincipalView;
 import GUI.Ver;
 import IOElements.Escritor;

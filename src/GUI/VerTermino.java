@@ -14,12 +14,12 @@ import java.awt.geom.RoundRectangle2D;
  *
  * @author ASUS
  */
-public class Editar extends javax.swing.JDialog {
+public class VerTermino extends javax.swing.JDialog {
     private Termino termino;
     /**
      * Creates new form Ver
      */
-    public Editar(PrincipalView vistaPrincipal, boolean modal,Termino termino) {
+    public VerTermino(PrincipalView vistaPrincipal, boolean modal,Termino termino) {
         super(vistaPrincipal, true);
         initComponents();
         this.termino = termino;
@@ -43,15 +43,14 @@ public class Editar extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        btnVer1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txtExpresion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
-        txtCategoria = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        txtExpresion = new javax.swing.JLabel();
+        txtCategoria = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -63,13 +62,16 @@ public class Editar extends javax.swing.JDialog {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 240, 60));
 
         btnEditar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditar.setText("Editar");
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit (1).png"))); // NOI18N
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, -1, -1));
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 40, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 40, 50));
@@ -87,23 +89,9 @@ public class Editar extends javax.swing.JDialog {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 330, -1));
 
-        btnVer1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnVer1.setText("Agregar");
-        btnVer1.setContentAreaFilled(false);
-        btnVer1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVer1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnVer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Categoria:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, -1));
-
-        txtExpresion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtExpresion.setForeground(new java.awt.Color(102, 102, 102));
-        getContentPane().add(txtExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 210, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Expresión:");
@@ -115,16 +103,13 @@ public class Editar extends javax.swing.JDialog {
         txtDescripcion.setRows(5);
         txtDescripcion.setWrapStyleWord(true);
         txtDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtDescripcion.setDisabledTextColor(new java.awt.Color(60, 60, 60));
+        txtDescripcion.setEnabled(false);
         getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 300, 210));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Descripción:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
-
-        txtCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una categoria...", "Sistemas Distribuidos", "Sistemas Embebidos", "Bases de Datos", "Redes", "Programación Orientada a Objetos", "Programación Móvil", "Programación Web" }));
-        txtCategoria.setToolTipText("");
-        txtCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 300, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 30, 50));
@@ -132,6 +117,14 @@ public class Editar extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setText("Diccionario Técnico");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 240, 60));
+
+        txtExpresion.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        txtExpresion.setText("xxxx");
+        getContentPane().add(txtExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 170, -1));
+
+        txtCategoria.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        txtCategoria.setText("xxxx");
+        getContentPane().add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 300, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -143,10 +136,6 @@ public class Editar extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnVer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVer1ActionPerformed
-        
-    }//GEN-LAST:event_btnVer1ActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -154,39 +143,14 @@ public class Editar extends javax.swing.JDialog {
     public void actualizarTermino(){
         txtExpresion.setText(termino.obtExpresion());
         txtDescripcion.setText(termino.obtSignificado());
-        switch(termino.getCategorias().getClass().getSimpleName().toString()){
-            case "BasesDeDatos":
-                txtCategoria.setSelectedIndex(4);
-            break;
-            case "ProgramacionMovil":
-                txtCategoria.setSelectedIndex(6);
-            break;
-            case "ProgramacionOrientadaAObjetos":
-                txtCategoria.setSelectedIndex(5);
-            break;
-            case "ProgramacionWeb":
-                txtCategoria.setSelectedIndex(7);
-            break;
-            case "Redes":
-                txtCategoria.setSelectedIndex(3);
-            break;
-            case "SistemasDistribuidos":
-                txtCategoria.setSelectedIndex(1);
-            break;
-            case "SistemasEmbeidos":
-                txtCategoria.setSelectedIndex(2);
-            break;
-            default:
-                System.out.println(termino.getCategorias().get(0).getClass().getSimpleName());
-            break;
-        }
+        txtCategoria.setText(termino.getCategorias().get(0).getClass().getSimpleName()); 
+                
         
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnVer1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -196,8 +160,8 @@ public class Editar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JComboBox<String> txtCategoria;
+    private javax.swing.JLabel txtCategoria;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtExpresion;
+    private javax.swing.JLabel txtExpresion;
     // End of variables declaration//GEN-END:variables
 }
