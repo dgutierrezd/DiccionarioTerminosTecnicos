@@ -22,7 +22,7 @@ public class Termino implements Serializable{
         ponSignificado(significado);
     }
 
-    Termino() {
+    public Termino() {
        
     }
     

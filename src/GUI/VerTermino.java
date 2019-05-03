@@ -5,16 +5,23 @@
  */
 package GUI;
 
+import ELementos.Glosario;
 import ELementos.Termino;
 import com.sun.awt.AWTUtilities;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author ASUS
  */
 public class VerTermino extends javax.swing.JDialog {
+    
+    private Glosario glosario;
+    private PrincipalView vistaPrincipal;
     private Termino termino;
     /**
      * Creates new form Ver
@@ -40,7 +47,6 @@ public class VerTermino extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnEditar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -60,18 +66,6 @@ public class VerTermino extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Diccionario Técnico");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 240, 60));
-
-        btnEditar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit (1).png"))); // NOI18N
-        btnEditar.setBorderPainted(false);
-        btnEditar.setContentAreaFilled(false);
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 40, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 40, 50));
@@ -135,22 +129,14 @@ public class VerTermino extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
     
     public void actualizarTermino(){
         txtExpresion.setText(termino.obtExpresion());
         txtDescripcion.setText(termino.obtSignificado());
-        txtCategoria.setText(termino.getCategorias().get(0).getClass().getSimpleName()); 
-                
-        
-    }
-    
+        txtCategoria.setText(termino.getCategorias().get(0).getClass().getSimpleName().toString());
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
