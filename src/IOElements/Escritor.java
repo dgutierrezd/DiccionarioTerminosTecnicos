@@ -5,6 +5,7 @@
  */
 package IOElements;
 
+import ELementos.Glosario;
 import ELementos.Termino;
 import java.io.IOException;
 
@@ -13,5 +14,5 @@ import java.io.IOException;
  * @author dgutierrezd
  */
 public interface Escritor {
-    public void escribirObjetos(Termino termino) throws IOException, ClassNotFoundException ;
+    public void escribirObjetos(Glosario glosario) throws IOException, ClassNotFoundException ;
 }

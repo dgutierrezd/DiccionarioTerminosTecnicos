@@ -5,6 +5,7 @@
  */
 package IOElements;
 
+import ELementos.Categoria;
 import ELementos.Termino;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,19 +18,20 @@ import ELementos.Glosario;
  * @author dgutierrezd
  */
 public class LectorGlosarioSerializado implements Lector {
-    
-    Glosario  glosario = new Glosario();
-    
-    // La categoría se lee en la Vista.
+
     @Override
-    public void leerObjetos(String expresion) throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream("TerminosGuardados/" + expresion + ".datos");
-        
+    public Glosario leerObjetos() throws FileNotFoundException, IOException, ClassNotFoundException {
+        FileInputStream fis = new FileInputStream("salida.datos");
+ 
+        // Sobre él se construye un flujo de entrada de objetos
+
         ObjectInputStream ois = new ObjectInputStream(fis);
-        
-        Termino termino = (Termino) ois.readObject();
-        
-        System.out.println("Palabra: " + termino.obtExpresion() + "; Significado: " + termino.obtSignificado() + " Categoria: " + termino.getCategorias());
+
+
+        return (Glosario) ois.readObject();        
     }
+    
+    
+    
     
 }

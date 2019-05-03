@@ -5,10 +5,12 @@
  */
 package ELementos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dgutierrezd
  */
-public class BasesDeDatos extends Categoria {
+public class BasesDeDatos extends Categoria implements Serializable {
     
 }

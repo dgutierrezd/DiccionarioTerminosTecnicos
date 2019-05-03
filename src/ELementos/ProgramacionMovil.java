@@ -5,10 +5,12 @@
  */
 package ELementos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dgutierrezd
  */
-public class ProgramacionMovil extends Categoria{
+public class ProgramacionMovil extends Categoria implements Serializable{
     
 }

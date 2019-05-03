@@ -10,32 +10,41 @@ import GUI.Editar;
 import GUI.PrincipalView;
 import GUI.Remover;
 import GUI.Ver;
+import IOElements.Escritor;
 import IOElements.EscritorGlosarioSerializado;
+import IOElements.Lector;
 import IOElements.LectorGlosarioSerializado;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author dgutierrezd
  */
-public class Glosario {
+public class Glosario implements Serializable{
     
-    private String rutaArchivo;
     private ArrayList<Termino> terminos = new ArrayList<>();
     
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Glosario glosario = new Glosario();
+        
+        Lector lectorGlosarioSerializado = new LectorGlosarioSerializado();
+        Glosario glosario = lectorGlosarioSerializado.leerObjetos();
+//        Glosario glosario = new Glosario();
         PrincipalView vistaPrincipal = new PrincipalView(glosario);
     }
     
-    public void determinarOpcionesVista(PrincipalView vistaPrincipal,int opcion){
+    public void determinarOpcionesVista(PrincipalView vistaPrincipal,int opcion) {
         
         switch(opcion){
             case 1:
-                JDialog dialogoVer = new Ver(vistaPrincipal, true);
+                JDialog dialogoVer = new Ver(vistaPrincipal, true);                
             break;
             case 2:
                 JDialog dialogoAgregar = new Agregar(vistaPrincipal, true);
@@ -45,6 +54,17 @@ public class Glosario {
             break;
             case 4:
                 JDialog dialogoRemover = new Remover(vistaPrincipal, true);
+            break;
+            case 5:
+                try{
+                    escribirSerializable(this);;
+                    System.exit(0);
+                }catch(IOException ioe){
+                    System.out.println("error io");
+                }catch(ClassNotFoundException cllas){
+                    System.out.println("error classmNotFound");
+                }
+                
             break;
         }
     }
@@ -79,9 +99,6 @@ public class Glosario {
                 }
                 newTermino.getCategorias().add(newCategoria);
                 this.terminos.add(newTermino);
-                escribirSerializable(newTermino);
-                leerSerializable(newTermino.obtExpresion());
-                
             break;
             case 2:
                 dialogo.dispose();
@@ -97,21 +114,33 @@ public class Glosario {
         }
     }
     
-    public void determinarOpcionesVer(JDialog dialog, int opcion, String ruta) throws IOException, FileNotFoundException, ClassNotFoundException {
-        switch(opcion) {
-            case 1:
-                leerSerializable(ruta);
-            break;
+    public void determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla) throws IOException, FileNotFoundException, ClassNotFoundException {
+
+        String[][] matrix = new String[terminos.size()][1];
+        for (int i = 0; i < terminos.size(); i++) {
+            matrix[i][0] = terminos.get(i).obtExpresion();
         }
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            matrix,
+            new String [] {
+                "Nombre termino:"
+            }
+        ));
+    
+//        switch(opcion) {
+//            case 1:
+//                
+//            break;
+//        }
     }
     
-    public void escribirSerializable(Termino termino) throws IOException, ClassNotFoundException {
-        EscritorGlosarioSerializado escritorGlosarioSerializado = new EscritorGlosarioSerializado();
-        escritorGlosarioSerializado.escribirObjetos(termino);
+    public void escribirSerializable(Glosario glosario) throws IOException, ClassNotFoundException {
+        Escritor escritorGlosarioSerializado = new EscritorGlosarioSerializado();
+        escritorGlosarioSerializado.escribirObjetos(glosario);
+    }
+
+    public ArrayList<Termino> getTerminos() {
+        return terminos;
     }
     
-    public void leerSerializable(String expresion) throws IOException, FileNotFoundException, ClassNotFoundException {
-        LectorGlosarioSerializado lectorGlosarioSerializado = new LectorGlosarioSerializado();
-        lectorGlosarioSerializado.leerObjetos(expresion);
-    }
 }

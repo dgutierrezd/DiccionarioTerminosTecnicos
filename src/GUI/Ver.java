@@ -12,7 +12,10 @@ import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -27,10 +30,19 @@ public class Ver extends javax.swing.JDialog {
      */
     public Ver(PrincipalView vistaPrincipal, boolean modal) {
         super(vistaPrincipal, true);
+        glosario = vistaPrincipal.getGlosario();
         initComponents();
-         Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
+        Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
         AWTUtilities.setWindowShape(this, forma);        
         setLocationRelativeTo(null);
+        
+        try {
+            glosario.determinarOpcionesVer(this, 0, tablaDatos);
+        } catch (IOException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setVisible(modal);
     }
 
@@ -47,7 +59,8 @@ public class Ver extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnVer = new javax.swing.JButton();
-        txtCategoria = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaDatos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -81,10 +94,28 @@ public class Ver extends javax.swing.JDialog {
                 btnVerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
+        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, -1, -1));
 
-        txtCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona la categoría que quieres ver", "Sistemas Distribuidos", "Sistemas Embebidos", "Bases de Datos", "Redes", "Programación Orientada a Objetos", "Programación Móvil", "Programación Web" }));
-        getContentPane().add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre termino:"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaDatos.setToolTipText("");
+        jScrollPane2.setViewportView(tablaDatos);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 230, 430));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -98,27 +129,28 @@ public class Ver extends javax.swing.JDialog {
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
         estado = 1;
-        // try {
-            if(!(txtCategoria.getSelectedIndex() == 0)) {
-                // glosario.determinarOpcionesVer(this, estado, (String) txtCategoria.getSelectedItem());
-            } else {
-                JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
-            }    
-//        } catch (IOException ex) {
-//            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
-        // }
+        
     }//GEN-LAST:event_btnVerActionPerformed
+
+    public JTable getTablaDatos() {
+        return tablaDatos;
+    }
+
+    public void setTablaDatos(JTable tablaDatos) {
+        this.tablaDatos = tablaDatos;
+    }
 
     
 
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVer;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox<String> txtCategoria;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tablaDatos;
     // End of variables declaration//GEN-END:variables
 }

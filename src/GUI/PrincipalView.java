@@ -114,12 +114,14 @@ public class PrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);
+        estado =5;
+        glosario.determinarOpcionesVista(this, estado);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
         estado = 1;
         glosario.determinarOpcionesVista(this, estado);
+        
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed

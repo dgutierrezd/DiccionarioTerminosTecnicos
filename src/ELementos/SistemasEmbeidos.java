@@ -5,10 +5,12 @@
  */
 package ELementos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dgutierrezd
  */
-public class SistemasEmbeidos extends Categoria {
+public class SistemasEmbeidos extends Categoria implements Serializable{
     
 }

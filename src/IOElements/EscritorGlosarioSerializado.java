@@ -18,16 +18,18 @@ import ELementos.Glosario;
  */
 public class EscritorGlosarioSerializado implements Escritor {
     
-    Glosario  glosario = new Glosario();
     
     @Override
-    public void escribirObjetos(Termino termino) throws IOException, ClassNotFoundException  {
-        // Termino termino = new Termino(expresion, significado);
+    public void escribirObjetos(Glosario glosario) throws IOException, ClassNotFoundException  {
         
-        FileOutputStream fos = new FileOutputStream("TerminosGuardados/" + termino.obtExpresion() + ".datos");
-        
+        FileOutputStream fos = new FileOutputStream("salida.datos");
+ 
+        // Sobre él se construye un flujo de salida de objetos
+
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        
-        oos.writeObject(termino);
+
+        // Se escriben los objetos (serializados) al disco a través del flujo anterior
+
+        oos.writeObject(glosario);
     }
 }

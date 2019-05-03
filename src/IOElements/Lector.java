@@ -5,6 +5,8 @@
  */
 package IOElements;
 
+import ELementos.Categoria;
+import ELementos.Glosario;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -13,5 +15,5 @@ import java.io.IOException;
  * @author dgutierrezd
  */
 public interface Lector {
-    public void leerObjetos(String categoria) throws FileNotFoundException, IOException, ClassNotFoundException;
+    public Glosario leerObjetos() throws FileNotFoundException, IOException, ClassNotFoundException;
 }
