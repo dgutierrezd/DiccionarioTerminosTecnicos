@@ -85,16 +85,20 @@ public class Glosario implements Serializable{
         }
     }
     
-    public void determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove) throws IOException, FileNotFoundException, ClassNotFoundException {
+    public Termino determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove) throws IOException, FileNotFoundException, ClassNotFoundException {
 
         refrescarDatos(tabla);
-    
+        Termino termino = new Termino();
         switch(opcion) {
             case 1:
                 terminos.remove(datoRemove);
                 refrescarDatos(tabla);
             break;
+            case 2:
+                termino = terminos.get(datoRemove);
+            break;
         }
+        return termino;
     }
     
     public void escribirSerializable() throws IOException, ClassNotFoundException {

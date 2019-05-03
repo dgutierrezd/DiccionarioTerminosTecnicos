@@ -54,8 +54,8 @@ public class Agregar extends javax.swing.JDialog {
         txtDescripcion = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         txtCategoria = new javax.swing.JComboBox<>();
-        fondo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -70,7 +70,7 @@ public class Agregar extends javax.swing.JDialog {
         jButton1.setText("Volver");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -117,11 +117,11 @@ public class Agregar extends javax.swing.JDialog {
         txtCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 300, -1));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 40, 50));
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 30, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

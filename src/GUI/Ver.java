@@ -6,6 +6,7 @@
 package GUI;
 
 import ELementos.Glosario;
+import ELementos.Termino;
 import com.sun.awt.AWTUtilities;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
@@ -23,13 +24,16 @@ import javax.swing.JTable;
  */
 public class Ver extends javax.swing.JDialog {
     private Glosario glosario;
+    private PrincipalView vistaPrincipal;
     private int estado;
     private int indexRemove;
+    private int fila;
     /**
      * Creates new form Ver
      */
     public Ver(PrincipalView vistaPrincipal, boolean modal) {
         super(vistaPrincipal, true);
+        this.vistaPrincipal = vistaPrincipal;
         glosario = vistaPrincipal.getGlosario();
         initComponents();
         Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
@@ -42,7 +46,6 @@ public class Ver extends javax.swing.JDialog {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         setVisible(modal);
     }
 
@@ -61,6 +64,7 @@ public class Ver extends javax.swing.JDialog {
         btnEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,11 +76,11 @@ public class Ver extends javax.swing.JDialog {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 240, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 30, 50));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 40, 50));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Salir");
+        jButton1.setText("Volver");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -85,10 +89,10 @@ public class Ver extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 330, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 330, -1));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/descarga (1) (1).png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/img_416864 (1).png"))); // NOI18N
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -97,7 +101,7 @@ public class Ver extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, 60, 60));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 60, 70));
 
         jScrollPane2.setFocusable(false);
         jScrollPane2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -131,6 +135,14 @@ public class Ver extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 230, 290));
 
+        jButton2.setText("Ver");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 100, 40));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -155,8 +167,21 @@ public class Ver extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
-        indexRemove = tablaDatos.getSelectedRow();        
+        indexRemove = tablaDatos.rowAtPoint(evt.getPoint());
+        
     }//GEN-LAST:event_tablaDatosMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       estado = 2;
+        try { 
+            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove);
+            Editar dialogoEditar = new Editar(vistaPrincipal, true, termino);
+        } catch (IOException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public JTable getTablaDatos() {
         return tablaDatos;
@@ -173,6 +198,7 @@ public class Ver extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

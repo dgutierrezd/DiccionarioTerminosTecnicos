@@ -21,6 +21,10 @@ public class Termino implements Serializable{
         ponExpresion(expresion);
         ponSignificado(significado);
     }
+
+    Termino() {
+       
+    }
     
     public void ponExpresion(String expresion) {
             this.expresion = expresion;
