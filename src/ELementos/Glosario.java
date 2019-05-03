@@ -22,6 +22,7 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -37,32 +38,6 @@ public class Glosario implements Serializable{
         Glosario glosario = lectorGlosarioSerializado.leerObjetos();
 //        Glosario glosario = new Glosario();
         PrincipalView vistaPrincipal = new PrincipalView(glosario);
-    }
-    
-    public void determinarOpcionesVista(PrincipalView vistaPrincipal,int opcion) {
-        
-        switch(opcion){
-            case 1:
-                JDialog dialogoVer = new Ver(vistaPrincipal, true);                
-            break;
-            case 2:
-                JDialog dialogoAgregar = new Agregar(vistaPrincipal, true);
-            break;
-            case 3:
-                JDialog dialogoEditar = new Editar(vistaPrincipal, true);
-            break;
-            case 4:
-                try{
-                    escribirSerializable(this);;
-                    System.exit(0);
-                }catch(IOException ioe){
-                    System.out.println("error io");
-                }catch(ClassNotFoundException cllas){
-                    System.out.println("error classmNotFound");
-                }
-                
-            break;
-        }
     }
     
     public void determinarOpcionesAgregar(JDialog dialogo,int opcion,String expresion,String significado,String categoria) throws IOException, ClassNotFoundException{
@@ -122,9 +97,9 @@ public class Glosario implements Serializable{
         }
     }
     
-    public void escribirSerializable(Glosario glosario) throws IOException, ClassNotFoundException {
+    public void escribirSerializable() throws IOException, ClassNotFoundException {
         Escritor escritorGlosarioSerializado = new EscritorGlosarioSerializado();
-        escritorGlosarioSerializado.escribirObjetos(glosario);
+        escritorGlosarioSerializado.escribirObjetos(this);
     }
 
     public ArrayList<Termino> getTerminos() {
@@ -136,12 +111,10 @@ public class Glosario implements Serializable{
         for (int i = 0; i < terminos.size(); i++) {
             matrix[i][0] = terminos.get(i).obtExpresion();
         }
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            matrix,
-            new String [] {
-                "Nombre termino:"
-            }
-        ));
+        DefaultTableModel model = new javax.swing.table.DefaultTableModel(matrix,new String[]{"Nombre termino:"});
+        DefaultTableCellHeaderRenderer center = new DefaultTableCellHeaderRenderer();
+        tabla.getColumnModel().getColumn(0).setCellRenderer(center);
+        tabla.setModel(model);
     }
     
 }

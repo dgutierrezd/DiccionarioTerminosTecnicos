@@ -10,6 +10,11 @@ import com.sun.awt.AWTUtilities;
 import com.sun.xml.internal.ws.encoding.MtomCodec;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -94,19 +99,27 @@ public class PrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        estado = 4;
-        glosario.determinarOpcionesVista(this, estado);
+        try {
+            glosario.escribirSerializable();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Hay un problema al serializarGlosario.");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+;
+        System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        estado = 1;
-        glosario.determinarOpcionesVista(this, estado);
-        
+//        estado = 1;
+//        glosario.determinarOpcionesVista(this, estado);
+        JDialog dialogoVer = new Ver(this, true);  
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        estado = 2;
-        glosario.determinarOpcionesVista(this, estado);
+//        estado = 2;
+//        glosario.determinarOpcionesVista(this, estado);
+        JDialog dialogoAgregar = new Agregar(this, true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     public Glosario getGlosario() {

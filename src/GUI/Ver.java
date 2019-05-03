@@ -88,14 +88,22 @@ public class Ver extends javax.swing.JDialog {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 330, -1));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEliminar.setText("Eliminar Termino");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/descarga (1) (1).png"))); // NOI18N
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, -1, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, 60, 60));
 
+        jScrollPane2.setFocusable(false);
+        jScrollPane2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        tablaDatos.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        tablaDatos.setForeground(new java.awt.Color(102, 102, 102));
         tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -113,6 +121,7 @@ public class Ver extends javax.swing.JDialog {
             }
         });
         tablaDatos.setToolTipText("");
+        tablaDatos.setRowHeight(30);
         tablaDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaDatosMouseClicked(evt);
@@ -120,7 +129,7 @@ public class Ver extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(tablaDatos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 230, 430));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 230, 290));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -135,8 +144,7 @@ public class Ver extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         estado = 1;
         try {
-            glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove);
-            
+            glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove);            
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -147,9 +155,7 @@ public class Ver extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
-        indexRemove = tablaDatos.getSelectedRow();
-        
-        
+        indexRemove = tablaDatos.getSelectedRow();        
     }//GEN-LAST:event_tablaDatosMouseClicked
 
     public JTable getTablaDatos() {
