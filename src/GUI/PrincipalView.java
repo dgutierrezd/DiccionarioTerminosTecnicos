@@ -43,8 +43,6 @@ public class PrincipalView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnVer = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnRemover = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +61,7 @@ public class PrincipalView extends javax.swing.JFrame {
         jButton1.setText("Salir");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -78,7 +76,7 @@ public class PrincipalView extends javax.swing.JFrame {
                 btnVerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAgregar.setText("Agregar");
@@ -87,25 +85,7 @@ public class PrincipalView extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
-
-        btnEditar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
-
-        btnRemover.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnRemover.setText("Remover");
-        btnRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoverActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, -1, -1));
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -114,7 +94,7 @@ public class PrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        estado =5;
+        estado = 4;
         glosario.determinarOpcionesVista(this, estado);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -129,16 +109,6 @@ public class PrincipalView extends javax.swing.JFrame {
         glosario.determinarOpcionesVista(this, estado);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        estado = 3;
-        glosario.determinarOpcionesVista(this, estado);
-    }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        estado = 4;
-        glosario.determinarOpcionesVista(this, estado);
-    }//GEN-LAST:event_btnRemoverActionPerformed
-
     public Glosario getGlosario() {
         return glosario;
     }
@@ -147,8 +117,6 @@ public class PrincipalView extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnVer;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

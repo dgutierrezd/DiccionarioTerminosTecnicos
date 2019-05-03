@@ -3,21 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/Escritor.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/EscritorGlosarioSerializado.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Glosario.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/LectorGlosarioSerializado.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/AccionUsuario.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/Lector.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/ProgramacionMovil.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Ver.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/PrincipalView.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/AccionVer.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Categoria.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Termino.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Editar.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Agregar.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Remover.java</file>
+            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Agregar.java</file>
+            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Glosario.java</file>
+            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/LectorGlosarioSerializado.java</file>
+            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Termino.java</file>
+            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Ver.java</file>
+            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/EscritorGlosarioSerializado.java</file>
         </group>
     </open-files>
 </project-private>

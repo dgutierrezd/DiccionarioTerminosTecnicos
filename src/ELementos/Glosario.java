@@ -8,7 +8,6 @@ package ELementos;
 import GUI.Agregar;
 import GUI.Editar;
 import GUI.PrincipalView;
-import GUI.Remover;
 import GUI.Ver;
 import IOElements.Escritor;
 import IOElements.EscritorGlosarioSerializado;
@@ -53,9 +52,6 @@ public class Glosario implements Serializable{
                 JDialog dialogoEditar = new Editar(vistaPrincipal, true);
             break;
             case 4:
-                JDialog dialogoRemover = new Remover(vistaPrincipal, true);
-            break;
-            case 5:
                 try{
                     escribirSerializable(this);;
                     System.exit(0);
