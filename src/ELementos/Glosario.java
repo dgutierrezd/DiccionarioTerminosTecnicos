@@ -130,6 +130,7 @@ public class Glosario implements Serializable{
     public ArrayList<Termino> getTerminos() {
         return terminos;
     }
+    
     public void refrescarDatos(JTable tabla){
         String[][] matrix = new String[terminos.size()][1];
         for (int i = 0; i < terminos.size(); i++) {
@@ -142,4 +143,5 @@ public class Glosario implements Serializable{
             }
         ));
     }
+    
 }

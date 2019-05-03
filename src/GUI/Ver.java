@@ -42,6 +42,7 @@ public class Ver extends javax.swing.JDialog {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         setVisible(modal);
     }
 
@@ -135,15 +136,19 @@ public class Ver extends javax.swing.JDialog {
         estado = 1;
         try {
             glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove);
+            
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(IndexOutOfBoundsException iobe) {
+            JOptionPane.showMessageDialog(null, "No hay ningún término para eliminar.");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         indexRemove = tablaDatos.getSelectedRow();
+        
         
     }//GEN-LAST:event_tablaDatosMouseClicked
 
