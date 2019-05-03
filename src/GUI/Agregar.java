@@ -135,6 +135,7 @@ public class Agregar extends javax.swing.JDialog {
         try{
             if(!(txtExpresion.getText().equals("") || txtDescripcion.getText().equals("") || txtCategoria.getSelectedIndex() == 0)){
                 glosario.determinarOpcionesAgregar(this, estado, txtExpresion.getText(), txtDescripcion.getText(), (String) txtCategoria.getSelectedItem());
+                JOptionPane.showMessageDialog(null, "Se ha agregado con éxito.");
                 limpiarTxt();
             }else{
                 JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
