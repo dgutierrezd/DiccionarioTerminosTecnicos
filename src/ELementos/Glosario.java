@@ -110,24 +110,16 @@ public class Glosario implements Serializable{
         }
     }
     
-    public void determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla) throws IOException, FileNotFoundException, ClassNotFoundException {
+    public void determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove) throws IOException, FileNotFoundException, ClassNotFoundException {
 
-        String[][] matrix = new String[terminos.size()][1];
-        for (int i = 0; i < terminos.size(); i++) {
-            matrix[i][0] = terminos.get(i).obtExpresion();
-        }
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            matrix,
-            new String [] {
-                "Nombre termino:"
-            }
-        ));
+        refrescarDatos(tabla);
     
-//        switch(opcion) {
-//            case 1:
-//                
-//            break;
-//        }
+        switch(opcion) {
+            case 1:
+                terminos.remove(datoRemove);
+                refrescarDatos(tabla);
+            break;
+        }
     }
     
     public void escribirSerializable(Glosario glosario) throws IOException, ClassNotFoundException {
@@ -138,5 +130,16 @@ public class Glosario implements Serializable{
     public ArrayList<Termino> getTerminos() {
         return terminos;
     }
-    
+    public void refrescarDatos(JTable tabla){
+        String[][] matrix = new String[terminos.size()][1];
+        for (int i = 0; i < terminos.size(); i++) {
+            matrix[i][0] = terminos.get(i).obtExpresion();
+        }
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            matrix,
+            new String [] {
+                "Nombre termino:"
+            }
+        ));
+    }
 }
