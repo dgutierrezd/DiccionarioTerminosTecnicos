@@ -129,6 +129,8 @@ public class Editar extends javax.swing.JDialog {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         termino.ponExpresion(txtExpresion.getText());
         termino.ponSignificado(txtDescripcion.getText());
+        JOptionPane.showMessageDialog(null, "Se ha editado y guardado con éxito.");
+        dispose();
     }//GEN-LAST:event_btnEditarActionPerformed
     
     public void obtenerTermino(){

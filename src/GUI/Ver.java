@@ -202,6 +202,7 @@ public class Ver extends javax.swing.JDialog {
         try { 
             Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove);
             Editar editar = new Editar(vistaPrincipal, true, termino);
+            dispose();
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
