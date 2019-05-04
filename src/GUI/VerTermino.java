@@ -23,7 +23,7 @@ import javax.swing.UIManager;
  * @author ASUS
  */
 public class VerTermino extends javax.swing.JDialog {
-    
+    private Ver ver;
     private Glosario glosario;
     private PrincipalView vistaPrincipal;
     private Termino termino;
@@ -33,6 +33,7 @@ public class VerTermino extends javax.swing.JDialog {
     public VerTermino(PrincipalView vistaPrincipal, boolean modal,Termino termino) {
         super(vistaPrincipal, true);
         initComponents();
+        this.vistaPrincipal = vistaPrincipal;
         this.termino = termino;
          Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
         AWTUtilities.setWindowShape(this, forma);        
@@ -152,7 +153,7 @@ public class VerTermino extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // JDialog dialogoVer = new Ver(vistaPrincipal, true);  
+        JDialog dialogoVer = new Ver(vistaPrincipal, true);  
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 

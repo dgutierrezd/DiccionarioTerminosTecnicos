@@ -111,14 +111,10 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-//        estado = 1;
-//        glosario.determinarOpcionesVista(this, estado);
         JDialog dialogoVer = new Ver(this, true);  
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-//        estado = 2;
-//        glosario.determinarOpcionesVista(this, estado);
         JDialog dialogoAgregar = new Agregar(this, true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
