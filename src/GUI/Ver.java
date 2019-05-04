@@ -66,7 +66,6 @@ public class Ver extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
         btnVerTermino = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -104,7 +103,7 @@ public class Ver extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 60, 70));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, 60, 70));
 
         jScrollPane2.setFocusable(false);
         jScrollPane2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -146,18 +145,6 @@ public class Ver extends javax.swing.JDialog {
         });
         getContentPane().add(btnVerTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 100, 40));
 
-        btnEditar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit (1).png"))); // NOI18N
-        btnEditar.setBorderPainted(false);
-        btnEditar.setContentAreaFilled(false);
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 560, 40, 30));
-
         jLabel4.setText("Selecciona un término.");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
@@ -194,6 +181,7 @@ public class Ver extends javax.swing.JDialog {
         try { 
             Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove);
             VerTermino dialogoVerTermino = new VerTermino(vistaPrincipal, true, termino);
+            dispose();
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -202,21 +190,6 @@ public class Ver extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "No hay ningún término para ver.");
         }
     }//GEN-LAST:event_btnVerTerminoActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        estado = 2; 
-        try { 
-            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove);
-            Editar editar = new Editar(vistaPrincipal, true, termino);
-            dispose();
-        } catch (IOException ex) {
-            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IndexOutOfBoundsException iobe) {
-            JOptionPane.showMessageDialog(null, "No hay ningún término para editar.");
-        }
-    }//GEN-LAST:event_btnEditarActionPerformed
     
     public JTable getTablaDatos() {
         return tablaDatos;
@@ -231,7 +204,6 @@ public class Ver extends javax.swing.JDialog {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnVerTermino;
     private javax.swing.JButton jButton1;

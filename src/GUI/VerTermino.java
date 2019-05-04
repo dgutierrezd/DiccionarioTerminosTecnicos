@@ -8,11 +8,15 @@ package GUI;
 import ELementos.Glosario;
 import ELementos.Termino;
 import com.sun.awt.AWTUtilities;
+import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -33,6 +37,7 @@ public class VerTermino extends javax.swing.JDialog {
          Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
         AWTUtilities.setWindowShape(this, forma);        
         setLocationRelativeTo(null);
+        habilitarCampos(false);
         actualizarTermino();
         setVisible(modal);
     }
@@ -48,15 +53,17 @@ public class VerTermino extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtExpresion = new javax.swing.JLabel();
-        txtCategoria = new javax.swing.JLabel();
+        txtExpresion = new javax.swing.JTextField();
+        txtCategoria = new javax.swing.JComboBox<>();
+        btnEditar = new javax.swing.JButton();
+        btnEditargGuardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -70,18 +77,18 @@ public class VerTermino extends javax.swing.JDialog {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, 40, 50));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Volver");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(204, 204, 204));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setBorderPainted(false);
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 330, -1));
+        getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 330, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Categoria:");
@@ -98,7 +105,6 @@ public class VerTermino extends javax.swing.JDialog {
         txtDescripcion.setWrapStyleWord(true);
         txtDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtDescripcion.setDisabledTextColor(new java.awt.Color(60, 60, 60));
-        txtDescripcion.setEnabled(false);
         getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 300, 210));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -112,13 +118,32 @@ public class VerTermino extends javax.swing.JDialog {
         jLabel8.setText("Diccionario Técnico");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 240, 60));
 
-        txtExpresion.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        txtExpresion.setText("xxxx");
-        getContentPane().add(txtExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 170, -1));
+        txtExpresion.setDisabledTextColor(new java.awt.Color(68, 68, 68));
+        getContentPane().add(txtExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 190, -1));
 
-        txtCategoria.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        txtCategoria.setText("xxxx");
-        getContentPane().add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 300, -1));
+        txtCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una categoria...", "Sistemas Distribuidos", "Sistemas Embebidos", "Bases de Datos", "Redes", "Programación Orientada a Objetos", "Programación Móvil", "Programación Web" }));
+        txtCategoria.setToolTipText("");
+        txtCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 300, -1));
+
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit (1).png"))); // NOI18N
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 40, 30));
+
+        btnEditargGuardar.setText("Editar y Guardar");
+        btnEditargGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditargGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditargGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -126,18 +151,64 @@ public class VerTermino extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // JDialog dialogoVer = new Ver(vistaPrincipal, true);  
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnEditargGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditargGuardarActionPerformed
+        termino.ponExpresion(txtExpresion.getText());
+        termino.ponSignificado(txtDescripcion.getText());
+        JOptionPane.showMessageDialog(null, "Se ha editado y guardado con éxito.");
+        habilitarCampos(false);
+    }//GEN-LAST:event_btnEditargGuardarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        habilitarCampos(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
     
     public void actualizarTermino(){
         txtExpresion.setText(termino.obtExpresion());
         txtDescripcion.setText(termino.obtSignificado());
-        txtCategoria.setText(termino.getCategorias().get(0).getClass().getSimpleName().toString());
+        switch(termino.getCategorias().get(0).getClass().getSimpleName().toString()){
+            case "BasesDeDatos":
+                txtCategoria.setSelectedIndex(4);
+            break;
+            case "ProgramacionMovil":
+                txtCategoria.setSelectedIndex(6);
+            break;
+            case "ProgramacionOrientadaAObjetos":
+                txtCategoria.setSelectedIndex(5);
+            break;
+            case "ProgramacionWeb":
+                txtCategoria.setSelectedIndex(7);
+            break;
+            case "Redes":
+                txtCategoria.setSelectedIndex(3);
+            break;
+            case "SistemasDistribuidos":
+                txtCategoria.setSelectedIndex(1);
+            break;
+            case "SistemasEmbeidos":
+                txtCategoria.setSelectedIndex(2);
+            break;
+            default:
+                System.out.println(termino.getCategorias().get(0).getClass().getSimpleName());
+        }
     }    
+    
+    public void habilitarCampos(boolean opcion) {
+        txtExpresion.setEnabled(opcion);
+        txtDescripcion.setEnabled(opcion);
+        txtCategoria.setEnabled(opcion);
+        btnEditargGuardar.setEnabled(opcion);
+        UIManager.put( "ComboBox.disabledForeground", Color.BLACK );
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditargGuardar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -146,8 +217,8 @@ public class VerTermino extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel txtCategoria;
+    private javax.swing.JComboBox<String> txtCategoria;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JLabel txtExpresion;
+    private javax.swing.JTextField txtExpresion;
     // End of variables declaration//GEN-END:variables
 }
