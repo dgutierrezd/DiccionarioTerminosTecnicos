@@ -62,21 +62,6 @@ public class Ver extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tablaCategorias = new javax.swing.JTabbedPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tablaDatos1 = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tablaDatos2 = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tablaDatos3 = new javax.swing.JTable();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tablaDatos5 = new javax.swing.JTable();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        tablaDatos6 = new javax.swing.JTable();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        tablaDatos7 = new javax.swing.JTable();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tablaDatos4 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -88,6 +73,11 @@ public class Ver extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         checkGeneral = new javax.swing.JCheckBox();
         checkCategoria = new javax.swing.JCheckBox();
+        tablaCategorias = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtCategoria = new javax.swing.JComboBox<>();
+        tablaDatosPricnipal1 = new javax.swing.JScrollPane();
+        tablaDatosCategorias = new javax.swing.JTable();
         tablaDatosPricnipal = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -95,234 +85,6 @@ public class Ver extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tablaCategorias.setBackground(new java.awt.Color(255, 255, 255));
-
-        jScrollPane3.setFocusable(false);
-        jScrollPane3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tablaDatos1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        tablaDatos1.setForeground(new java.awt.Color(102, 102, 102));
-        tablaDatos1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre termino:"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaDatos1.setToolTipText("");
-        tablaDatos1.setRowHeight(30);
-        tablaDatos1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaDatos1MouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tablaDatos1);
-
-        tablaCategorias.addTab("tab1", jScrollPane3);
-
-        jScrollPane4.setFocusable(false);
-        jScrollPane4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tablaDatos2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        tablaDatos2.setForeground(new java.awt.Color(102, 102, 102));
-        tablaDatos2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre termino:"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaDatos2.setToolTipText("");
-        tablaDatos2.setRowHeight(30);
-        tablaDatos2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaDatos2MouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(tablaDatos2);
-
-        tablaCategorias.addTab("tab1", jScrollPane4);
-
-        jScrollPane5.setFocusable(false);
-        jScrollPane5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tablaDatos3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        tablaDatos3.setForeground(new java.awt.Color(102, 102, 102));
-        tablaDatos3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre termino:"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaDatos3.setToolTipText("");
-        tablaDatos3.setRowHeight(30);
-        tablaDatos3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaDatos3MouseClicked(evt);
-            }
-        });
-        jScrollPane5.setViewportView(tablaDatos3);
-
-        tablaCategorias.addTab("tab1", jScrollPane5);
-
-        jScrollPane7.setFocusable(false);
-        jScrollPane7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tablaDatos5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        tablaDatos5.setForeground(new java.awt.Color(102, 102, 102));
-        tablaDatos5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre termino:"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaDatos5.setToolTipText("");
-        tablaDatos5.setRowHeight(30);
-        tablaDatos5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaDatos5MouseClicked(evt);
-            }
-        });
-        jScrollPane7.setViewportView(tablaDatos5);
-
-        tablaCategorias.addTab("tab1", jScrollPane7);
-
-        jScrollPane8.setFocusable(false);
-        jScrollPane8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tablaDatos6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        tablaDatos6.setForeground(new java.awt.Color(102, 102, 102));
-        tablaDatos6.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre termino:"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaDatos6.setToolTipText("");
-        tablaDatos6.setRowHeight(30);
-        tablaDatos6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaDatos6MouseClicked(evt);
-            }
-        });
-        jScrollPane8.setViewportView(tablaDatos6);
-
-        tablaCategorias.addTab("tab1", jScrollPane8);
-
-        jScrollPane9.setFocusable(false);
-        jScrollPane9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tablaDatos7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        tablaDatos7.setForeground(new java.awt.Color(102, 102, 102));
-        tablaDatos7.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre termino:"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaDatos7.setToolTipText("");
-        tablaDatos7.setRowHeight(30);
-        tablaDatos7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaDatos7MouseClicked(evt);
-            }
-        });
-        jScrollPane9.setViewportView(tablaDatos7);
-
-        tablaCategorias.addTab("tab1", jScrollPane9);
-
-        jScrollPane6.setFocusable(false);
-        jScrollPane6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        tablaDatos4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        tablaDatos4.setForeground(new java.awt.Color(102, 102, 102));
-        tablaDatos4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre termino:"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablaDatos4.setToolTipText("");
-        tablaDatos4.setRowHeight(30);
-        tablaDatos4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaDatos4MouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(tablaDatos4);
-
-        tablaCategorias.addTab("tab1", jScrollPane6);
-
-        getContentPane().add(tablaCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 260, 310));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Diccionario Técnico");
@@ -410,6 +172,75 @@ public class Ver extends javax.swing.JDialog {
             }
         });
         getContentPane().add(checkCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+
+        tablaCategorias.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Categoria:");
+
+        txtCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una categoria...", "Sistemas Distribuidos", "Sistemas Embebidos", "Bases de Datos", "Redes", "Programación Orientada a Objetos", "Programación Móvil", "Programación Web" }));
+        txtCategoria.setToolTipText("");
+        txtCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tablaDatosPricnipal1.setFocusable(false);
+        tablaDatosPricnipal1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        tablaDatosCategorias.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        tablaDatosCategorias.setForeground(new java.awt.Color(102, 102, 102));
+        tablaDatosCategorias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre termino:"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaDatosCategorias.setToolTipText("");
+        tablaDatosCategorias.setRowHeight(30);
+        tablaDatosCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaDatosCategoriasMouseClicked(evt);
+            }
+        });
+        tablaDatosPricnipal1.setViewportView(tablaDatosCategorias);
+
+        javax.swing.GroupLayout tablaCategoriasLayout = new javax.swing.GroupLayout(tablaCategorias);
+        tablaCategorias.setLayout(tablaCategoriasLayout);
+        tablaCategoriasLayout.setHorizontalGroup(
+            tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                .addGroup(tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(tablaDatosPricnipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(137, 137, 137))
+        );
+        tablaCategoriasLayout.setVerticalGroup(
+            tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tablaDatosPricnipal1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(tablaCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 320, 300));
 
         tablaDatosPricnipal.setFocusable(false);
         tablaDatosPricnipal.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -507,34 +338,6 @@ public class Ver extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void tablaDatos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatos1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaDatos1MouseClicked
-
-    private void tablaDatos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatos2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaDatos2MouseClicked
-
-    private void tablaDatos3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatos3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaDatos3MouseClicked
-
-    private void tablaDatos4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatos4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaDatos4MouseClicked
-
-    private void tablaDatos5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatos5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaDatos5MouseClicked
-
-    private void tablaDatos6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatos6MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaDatos6MouseClicked
-
-    private void tablaDatos7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatos7MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaDatos7MouseClicked
-
     private void checkCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCategoriaActionPerformed
         checkGeneral.setSelected(false);
         actualizarTerminos();
@@ -545,6 +348,10 @@ public class Ver extends javax.swing.JDialog {
         checkCategoria.setSelected(false);
         actualizarTerminos();        
     }//GEN-LAST:event_checkGeneralActionPerformed
+
+    private void tablaDatosCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosCategoriasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaDatosCategoriasMouseClicked
     public void actualizarTerminos(){
         if(checkCategoria.isSelected()){
             tablaCategorias.setVisible(true);
@@ -581,25 +388,15 @@ public class Ver extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTabbedPane tablaCategorias;
+    private javax.swing.JPanel tablaCategorias;
     private javax.swing.JTable tablaDatos;
-    private javax.swing.JTable tablaDatos1;
-    private javax.swing.JTable tablaDatos2;
-    private javax.swing.JTable tablaDatos3;
-    private javax.swing.JTable tablaDatos4;
-    private javax.swing.JTable tablaDatos5;
-    private javax.swing.JTable tablaDatos6;
-    private javax.swing.JTable tablaDatos7;
+    private javax.swing.JTable tablaDatosCategorias;
     private javax.swing.JScrollPane tablaDatosPricnipal;
+    private javax.swing.JScrollPane tablaDatosPricnipal1;
     private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JComboBox<String> txtCategoria;
     // End of variables declaration//GEN-END:variables
 }
