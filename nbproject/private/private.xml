@@ -5,9 +5,9 @@
         <group>
             <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Agregar.java</file>
             <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Glosario.java</file>
+            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/VerTermino.java</file>
             <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/LectorGlosarioSerializado.java</file>
             <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/PrincipalView.java</file>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Termino.java</file>
             <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Ver.java</file>
             <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/EscritorGlosarioSerializado.java</file>
         </group>
