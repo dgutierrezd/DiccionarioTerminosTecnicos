@@ -43,31 +43,8 @@ public class Glosario implements Serializable{
     public void determinarOpcionesAgregar(JDialog dialogo,int opcion,String expresion,String significado,String categoria) throws IOException, ClassNotFoundException{
         switch(opcion){
             case 1:
-                Categoria newCategoria = null;
-                Termino newTermino = new Termino(expresion, significado);
-                switch(categoria){
-                    case "Sistemas Distribuidos":
-                        newCategoria = new SistemasDistribuidos();
-                    break;
-                    case "Sistemas Embebidos":
-                        newCategoria = new SistemasEmbeidos();
-                    break;
-                    case "Bases de Datos":
-                        newCategoria = new BasesDeDatos();
-                    break;
-                    case "Redes":
-                        newCategoria = new Redes();
-                    break;
-                    case "Programación Orientada a Objetos":
-                        newCategoria = new ProgramacionOrientadaAObjetos();
-                    break;
-                    case "Programación Móvil":
-                        newCategoria = new ProgramacionMovil();
-                    break;
-                    case "Programación Web":
-                        newCategoria = new ProgramacionWeb();
-                    break;
-                }
+                Categoria newCategoria = determinarCategoria(categoria);
+                Termino newTermino = new Termino(expresion, significado);                
                 newTermino.getCategorias().add(newCategoria);
                 this.terminos.add(newTermino);
             break;
@@ -85,7 +62,7 @@ public class Glosario implements Serializable{
         }
     }
     
-    public Termino determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove) throws IOException, FileNotFoundException, ClassNotFoundException {
+    public Termino determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove,String datoBuscar) throws IOException, FileNotFoundException, ClassNotFoundException {
 
         refrescarDatos(tabla);
         Termino termino = new Termino();
@@ -96,6 +73,13 @@ public class Glosario implements Serializable{
             break;
             case 2:
                 termino = terminos.get(datoRemove);
+            break;
+            case 3:
+                for(int i=0;i<terminos.size();i++){
+                    if(terminos.get(i).obtExpresion().equals(datoBuscar)){
+                        termino = terminos.get(i);
+                    }
+                }
             break;
         }
         return termino;
@@ -121,4 +105,41 @@ public class Glosario implements Serializable{
         tabla.setModel(model);
     }
     
+    public void determinarOpcionesVerEditar(Termino termino, String expresionCambiar,String descripcionCambiar, ArrayList categorias){
+        for (int i = 0; i < terminos.size(); i++) {
+            if(terminos.get(i).obtExpresion().equals(termino.obtExpresion())){
+                terminos.get(i).ponExpresion(expresionCambiar);
+                terminos.get(i).ponSignificado(descripcionCambiar);
+                terminos.get(i).setCategorias(categorias);
+                System.out.println(terminos.get(i).getCategorias().get(0));
+            }
+        }
+    }
+    public Categoria determinarCategoria(String categoria){
+        Categoria newCategoria = null;
+        switch(categoria){
+            case "Sistemas Distribuidos":
+                newCategoria = new SistemasDistribuidos();
+            break;
+            case "Sistemas Embebidos":
+                newCategoria = new SistemasEmbeidos();
+            break;
+            case "Bases de Datos":
+                newCategoria = new BasesDeDatos();
+            break;
+            case "Redes":
+                newCategoria = new Redes();
+            break;
+            case "Programación Orientada a Objetos":
+                newCategoria = new ProgramacionOrientadaAObjetos();
+            break;
+            case "Programación Móvil":
+                newCategoria = new ProgramacionMovil();
+            break;
+            case "Programación Web":
+                newCategoria = new ProgramacionWeb();
+            break;
+        }
+        return newCategoria;
+    }
 }

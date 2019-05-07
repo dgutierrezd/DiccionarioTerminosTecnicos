@@ -37,11 +37,14 @@ public class Ver extends javax.swing.JDialog {
         this.vistaPrincipal = vistaPrincipal;
         glosario = vistaPrincipal.getGlosario();
         initComponents();
+        tablaDatosPricnipal.setVisible(false);
+        tablaCategorias.setVisible(false);
         Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
         AWTUtilities.setWindowShape(this, forma);        
-        setLocationRelativeTo(null);        
+        setLocationRelativeTo(null);
+        actualizarTerminos();
         try {
-            glosario.determinarOpcionesVer(this, 0, tablaDatos,0);
+            glosario.determinarOpcionesVer(this, 0, tablaDatos,0,null);
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -63,10 +66,20 @@ public class Ver extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaDatos = new javax.swing.JTable();
         btnVerTermino = new javax.swing.JButton();
+        txtBusqueda = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        checkGeneral = new javax.swing.JCheckBox();
+        checkCategoria = new javax.swing.JCheckBox();
+        tablaCategorias = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        txtCategoria = new javax.swing.JComboBox<>();
+        tablaDatosPricnipal1 = new javax.swing.JScrollPane();
+        tablaDatosCategorias = new javax.swing.JTable();
+        tablaDatosPricnipal = new javax.swing.JScrollPane();
+        tablaDatos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -103,10 +116,136 @@ public class Ver extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, 60, 70));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, 60, 70));
 
-        jScrollPane2.setFocusable(false);
-        jScrollPane2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnVerTermino.setText("Ver");
+        btnVerTermino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnVerTermino.setContentAreaFilled(false);
+        btnVerTermino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTerminoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVerTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 600, 100, 40));
+
+        txtBusqueda.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtBusqueda.setForeground(new java.awt.Color(102, 102, 102));
+        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 160, 30));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Busca");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 50, 40));
+
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconFinder.png"))); // NOI18N
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 30, 30));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setText("el termino:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 90, 40));
+
+        checkGeneral.setBackground(new java.awt.Color(255, 255, 255));
+        checkGeneral.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        checkGeneral.setText("Ver todos los terminos");
+        checkGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkGeneralActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
+
+        checkCategoria.setBackground(new java.awt.Color(255, 255, 255));
+        checkCategoria.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        checkCategoria.setText("Ver por Categorias");
+        checkCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkCategoriaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+
+        tablaCategorias.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Categoria:");
+
+        txtCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una categoria...", "Sistemas Distribuidos", "Sistemas Embebidos", "Bases de Datos", "Redes", "Programación Orientada a Objetos", "Programación Móvil", "Programación Web" }));
+        txtCategoria.setToolTipText("");
+        txtCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tablaDatosPricnipal1.setFocusable(false);
+        tablaDatosPricnipal1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        tablaDatosCategorias.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        tablaDatosCategorias.setForeground(new java.awt.Color(102, 102, 102));
+        tablaDatosCategorias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre termino:"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaDatosCategorias.setToolTipText("");
+        tablaDatosCategorias.setRowHeight(30);
+        tablaDatosCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaDatosCategoriasMouseClicked(evt);
+            }
+        });
+        tablaDatosPricnipal1.setViewportView(tablaDatosCategorias);
+
+        javax.swing.GroupLayout tablaCategoriasLayout = new javax.swing.GroupLayout(tablaCategorias);
+        tablaCategorias.setLayout(tablaCategoriasLayout);
+        tablaCategoriasLayout.setHorizontalGroup(
+            tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                .addGroup(tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(tablaDatosPricnipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(137, 137, 137))
+        );
+        tablaCategoriasLayout.setVerticalGroup(
+            tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tablaDatosPricnipal1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(tablaCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 320, 300));
+
+        tablaDatosPricnipal.setFocusable(false);
+        tablaDatosPricnipal.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         tablaDatos.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         tablaDatos.setForeground(new java.awt.Color(102, 102, 102));
@@ -133,20 +272,9 @@ public class Ver extends javax.swing.JDialog {
                 tablaDatosMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tablaDatos);
+        tablaDatosPricnipal.setViewportView(tablaDatos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 230, 290));
-
-        btnVerTermino.setText("Ver");
-        btnVerTermino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerTerminoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnVerTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 100, 40));
-
-        jLabel4.setText("Selecciona un término.");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        getContentPane().add(tablaDatosPricnipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 200, 262));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -161,7 +289,8 @@ public class Ver extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         estado = 1;
         try {
-            glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove);            
+            glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove,null);  
+            actualizarTerminos();
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -179,7 +308,27 @@ public class Ver extends javax.swing.JDialog {
     private void btnVerTerminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTerminoActionPerformed
         estado = 2;
         try { 
-            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove);
+            actualizarTerminos();
+            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove,null);
+            dispose();
+            VerTermino dialogoVerTermino = new VerTermino(vistaPrincipal, true, termino);
+        } catch (IOException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IndexOutOfBoundsException iobe) {
+            JOptionPane.showMessageDialog(null, "No hay ningún término para ver.");
+        }
+    }//GEN-LAST:event_btnVerTerminoActionPerformed
+
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusquedaActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        estado = 3;
+        try { 
+            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove,txtBusqueda.getText());
             VerTermino dialogoVerTermino = new VerTermino(vistaPrincipal, true, termino);
             dispose();
         } catch (IOException ex) {
@@ -189,8 +338,36 @@ public class Ver extends javax.swing.JDialog {
         } catch (IndexOutOfBoundsException iobe) {
             JOptionPane.showMessageDialog(null, "No hay ningún término para ver.");
         }
-    }//GEN-LAST:event_btnVerTerminoActionPerformed
-    
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void checkCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCategoriaActionPerformed
+        checkGeneral.setSelected(false);
+        actualizarTerminos();
+        
+    }//GEN-LAST:event_checkCategoriaActionPerformed
+
+    private void checkGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkGeneralActionPerformed
+        checkCategoria.setSelected(false);
+        actualizarTerminos();        
+    }//GEN-LAST:event_checkGeneralActionPerformed
+
+    private void tablaDatosCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosCategoriasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaDatosCategoriasMouseClicked
+    public void actualizarTerminos(){
+        if(checkCategoria.isSelected()){
+            tablaCategorias.setVisible(true);
+            tablaDatosPricnipal.setVisible(false);
+        }
+        if(checkGeneral.isSelected()){
+            tablaDatosPricnipal.setVisible(true);
+            tablaCategorias.setVisible(false);
+        }
+        if((!checkGeneral.isSelected()& !checkCategoria.isSelected())){
+            tablaCategorias.setVisible(false);
+            tablaDatosPricnipal.setVisible(false);
+        }
+    }
     public JTable getTablaDatos() {
         return tablaDatos;
     }
@@ -204,14 +381,24 @@ public class Ver extends javax.swing.JDialog {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnVerTermino;
+    private javax.swing.JCheckBox checkCategoria;
+    private javax.swing.JCheckBox checkGeneral;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel tablaCategorias;
     private javax.swing.JTable tablaDatos;
+    private javax.swing.JTable tablaDatosCategorias;
+    private javax.swing.JScrollPane tablaDatosPricnipal;
+    private javax.swing.JScrollPane tablaDatosPricnipal1;
+    private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JComboBox<String> txtCategoria;
     // End of variables declaration//GEN-END:variables
 }

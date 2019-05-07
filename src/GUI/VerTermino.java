@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import ELementos.Categoria;
 import ELementos.Glosario;
 import ELementos.Termino;
 import com.sun.awt.AWTUtilities;
@@ -12,6 +13,7 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
@@ -23,23 +25,24 @@ import javax.swing.UIManager;
  * @author ASUS
  */
 public class VerTermino extends javax.swing.JDialog {
-    private Ver ver;
-    private Glosario glosario;
+    
     private PrincipalView vistaPrincipal;
+    private Glosario glosario;
     private Termino termino;
     /**
      * Creates new form Ver
      */
     public VerTermino(PrincipalView vistaPrincipal, boolean modal,Termino termino) {
         super(vistaPrincipal, true);
-        initComponents();
+        this.glosario = vistaPrincipal.getGlosario();
         this.vistaPrincipal = vistaPrincipal;
         this.termino = termino;
+        initComponents();     
+        actualizarTermino();
          Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
         AWTUtilities.setWindowShape(this, forma);        
         setLocationRelativeTo(null);
-        habilitarCampos(false);
-        actualizarTermino();
+        habilitarCampos(false);        
         setVisible(modal);
     }
 
@@ -136,7 +139,7 @@ public class VerTermino extends javax.swing.JDialog {
                 btnEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 40, 30));
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, 40, 30));
 
         btnEditargGuardar.setText("Editar y Guardar");
         btnEditargGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,13 +156,17 @@ public class VerTermino extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        JDialog dialogoVer = new Ver(vistaPrincipal, true);  
+        JDialog dialogoVer = new Ver(vistaPrincipal, true);    
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnEditargGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditargGuardarActionPerformed
-        termino.ponExpresion(txtExpresion.getText());
-        termino.ponSignificado(txtDescripcion.getText());
+        String expresionCambiar = txtExpresion.getText();
+        String descripcionCambiar = txtDescripcion.getText();
+        ArrayList<Categoria> categorias = new ArrayList();
+        Categoria categoria = glosario.determinarCategoria(txtCategoria.getSelectedItem().toString());
+        categorias.add(categoria);
+        glosario.determinarOpcionesVerEditar(termino, expresionCambiar, descripcionCambiar, categorias);
         JOptionPane.showMessageDialog(null, "Se ha editado y guardado con éxito.");
         habilitarCampos(false);
     }//GEN-LAST:event_btnEditargGuardarActionPerformed
@@ -171,7 +178,7 @@ public class VerTermino extends javax.swing.JDialog {
     public void actualizarTermino(){
         txtExpresion.setText(termino.obtExpresion());
         txtDescripcion.setText(termino.obtSignificado());
-        switch(termino.getCategorias().get(0).getClass().getSimpleName().toString()){
+        switch(termino.getCategorias().get(0).getClass().getSimpleName()){
             case "BasesDeDatos":
                 txtCategoria.setSelectedIndex(4);
             break;
