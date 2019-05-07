@@ -34,15 +34,15 @@ public class VerTermino extends javax.swing.JDialog {
      */
     public VerTermino(PrincipalView vistaPrincipal, boolean modal,Termino termino) {
         super(vistaPrincipal, true);
-        initComponents();
         this.glosario = vistaPrincipal.getGlosario();
         this.vistaPrincipal = vistaPrincipal;
         this.termino = termino;
+        initComponents();     
+        actualizarTermino();
          Shape forma = new RoundRectangle2D.Double(0, 0, this.getBounds().width, this.getBounds().height, 90,90);
         AWTUtilities.setWindowShape(this, forma);        
         setLocationRelativeTo(null);
-        habilitarCampos(false);
-        actualizarTermino();
+        habilitarCampos(false);        
         setVisible(modal);
     }
 
@@ -156,8 +156,8 @@ public class VerTermino extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        JDialog dialogoVer = new Ver(vistaPrincipal, true);    
         dispose();
-        JDialog dialogoVer = new Ver(vistaPrincipal, true);          
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnEditargGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditargGuardarActionPerformed
