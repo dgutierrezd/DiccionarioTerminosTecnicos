@@ -41,7 +41,7 @@ public class Ver extends javax.swing.JDialog {
         AWTUtilities.setWindowShape(this, forma);        
         setLocationRelativeTo(null);        
         try {
-            glosario.determinarOpcionesVer(this, 0, tablaDatos,0);
+            glosario.determinarOpcionesVer(this, 0, tablaDatos,0,null);
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -67,6 +67,10 @@ public class Ver extends javax.swing.JDialog {
         tablaDatos = new javax.swing.JTable();
         btnVerTermino = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtBusqueda = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -135,7 +139,7 @@ public class Ver extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(tablaDatos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 230, 290));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 230, 290));
 
         btnVerTermino.setText("Ver");
         btnVerTermino.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +150,31 @@ public class Ver extends javax.swing.JDialog {
         getContentPane().add(btnVerTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 100, 40));
 
         jLabel4.setText("Selecciona un término.");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("el termino:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 90, 40));
+
+        txtBusqueda.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtBusqueda.setForeground(new java.awt.Color(102, 102, 102));
+        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 160, 30));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Busca");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 50, 40));
+
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, -1, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plantillaIphone (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -161,7 +189,7 @@ public class Ver extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         estado = 1;
         try {
-            glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove);            
+            glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove,null);            
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -179,7 +207,7 @@ public class Ver extends javax.swing.JDialog {
     private void btnVerTerminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTerminoActionPerformed
         estado = 2;
         try { 
-            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove);
+            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove,null);
             dispose();
             VerTermino dialogoVerTermino = new VerTermino(vistaPrincipal, true, termino);
         } catch (IOException ex) {
@@ -190,6 +218,25 @@ public class Ver extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "No hay ningún término para ver.");
         }
     }//GEN-LAST:event_btnVerTerminoActionPerformed
+
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusquedaActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        estado = 3;
+        try { 
+            Termino termino = glosario.determinarOpcionesVer(this,estado,tablaDatos,indexRemove,txtBusqueda.getText());
+            dispose();
+            VerTermino dialogoVerTermino = new VerTermino(vistaPrincipal, true, termino);
+        } catch (IOException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IndexOutOfBoundsException iobe) {
+            JOptionPane.showMessageDialog(null, "No hay ningún término para ver.");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
     
     public JTable getTablaDatos() {
         return tablaDatos;
@@ -204,6 +251,7 @@ public class Ver extends javax.swing.JDialog {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnVerTermino;
     private javax.swing.JButton jButton1;
@@ -211,7 +259,10 @@ public class Ver extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaDatos;
+    private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 }

@@ -62,7 +62,7 @@ public class Glosario implements Serializable{
         }
     }
     
-    public Termino determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove) throws IOException, FileNotFoundException, ClassNotFoundException {
+    public Termino determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove,String datoBuscar) throws IOException, FileNotFoundException, ClassNotFoundException {
 
         refrescarDatos(tabla);
         Termino termino = new Termino();
@@ -73,6 +73,13 @@ public class Glosario implements Serializable{
             break;
             case 2:
                 termino = terminos.get(datoRemove);
+            break;
+            case 3:
+                for(int i=0;i<terminos.size();i++){
+                    if(terminos.get(i).obtExpresion().equals(datoBuscar)){
+                        termino = terminos.get(i);
+                    }
+                }
             break;
         }
         return termino;
