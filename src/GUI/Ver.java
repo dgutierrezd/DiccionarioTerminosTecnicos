@@ -102,7 +102,7 @@ public class Ver extends javax.swing.JDialog {
         jButton1.setText("Volver");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -114,7 +114,7 @@ public class Ver extends javax.swing.JDialog {
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/img_416864 (1).png"))); // NOI18N
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -125,6 +125,7 @@ public class Ver extends javax.swing.JDialog {
         btnVerTermino.setText("Ver");
         btnVerTermino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnVerTermino.setContentAreaFilled(false);
+        btnVerTermino.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVerTermino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerTerminoActionPerformed(evt);
@@ -147,7 +148,7 @@ public class Ver extends javax.swing.JDialog {
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconFinder.png"))); // NOI18N
         btnBuscar.setContentAreaFilled(false);
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);

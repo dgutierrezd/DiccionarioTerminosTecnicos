@@ -70,7 +70,7 @@ public class PrincipalView extends javax.swing.JFrame {
         jButton1.setText("Salir");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -80,8 +80,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
         btnVer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnVer.setText("Ver");
-        btnVer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnVer.setBorderPainted(false);
+        btnVer.setBorder(null);
         btnVer.setContentAreaFilled(false);
         btnVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVer.setFocusable(false);

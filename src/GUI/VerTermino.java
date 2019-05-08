@@ -88,7 +88,7 @@ public class VerTermino extends javax.swing.JDialog {
         btnVolver.setText("Volver");
         btnVolver.setBorderPainted(false);
         btnVolver.setContentAreaFilled(false);
-        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
@@ -135,7 +135,7 @@ public class VerTermino extends javax.swing.JDialog {
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit (1).png"))); // NOI18N
         btnEditar.setBorderPainted(false);
         btnEditar.setContentAreaFilled(false);
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
