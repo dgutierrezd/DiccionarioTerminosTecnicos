@@ -14,8 +14,10 @@ import java.io.ObjectInputStream;
 import ELementos.Glosario;
 
 /**
- *
- * @author dgutierrezd
+ * Se leen objetos serializables.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class LectorGlosarioSerializado implements Lector {
 

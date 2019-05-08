@@ -17,8 +17,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author ASUS
+ * Vista para agregar términos y guardarlos.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class Agregar extends javax.swing.JDialog {
     private Glosario glosario;
@@ -126,10 +128,18 @@ public class Agregar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * botón para volver al menú principal.
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Botón para agregar el término indicado.
+     * @param evt 
+     */
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
         estado = 1;
         try{
@@ -148,6 +158,9 @@ public class Agregar extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnVerActionPerformed
 
+    /**
+     * Limpiar los campos de texto, luego de agregar el término.
+     */
     public void limpiarTxt(){
         txtExpresion.setText("");
         txtDescripcion.setText("");

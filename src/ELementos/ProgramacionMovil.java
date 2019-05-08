@@ -8,8 +8,10 @@ package ELementos;
 import java.io.Serializable;
 
 /**
- *
- * @author dgutierrezd
+ * Tipo de categoría.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class ProgramacionMovil extends Categoria implements Serializable{
     

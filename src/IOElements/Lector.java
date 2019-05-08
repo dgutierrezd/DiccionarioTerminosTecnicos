@@ -11,9 +11,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- *
- * @author dgutierrezd
+ * Interface que se encarga de leer los archivos de texto.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public interface Lector {
+    
+    /**
+     * Se leen objetos serializables.
+     * @return Clase Glosario, control
+     */
     public Glosario leerObjetos() throws FileNotFoundException, IOException, ClassNotFoundException;
 }

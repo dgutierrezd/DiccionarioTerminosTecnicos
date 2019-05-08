@@ -10,9 +10,16 @@ import ELementos.Termino;
 import java.io.IOException;
 
 /**
- *
- * @author dgutierrezd
+ * Interface que se encarga de escribir en archivos de texto.s
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public interface Escritor {
+    
+    /**
+     * Se escribe objetos serializables.
+     * @param glosario Clase control.
+     */
     public void escribirObjetos(Glosario glosario) throws IOException, ClassNotFoundException ;
 }

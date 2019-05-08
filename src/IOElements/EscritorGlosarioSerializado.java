@@ -13,8 +13,10 @@ import java.io.ObjectOutputStream;
 import ELementos.Glosario;
 
 /**
- *
- * @author dgutierrezd
+ * Escribir objetos serializables.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class EscritorGlosarioSerializado implements Escritor {
     

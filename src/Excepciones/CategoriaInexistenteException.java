@@ -6,8 +6,10 @@
 package Excepciones;
 
 /**
- *
- * @author dgutierrezd
+ * Clase de excepción cuando hay una categoría que no existe.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class CategoriaInexistenteException extends RuntimeException {
     

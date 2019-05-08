@@ -8,8 +8,10 @@ package ELementos;
 import java.util.ArrayList;
 
 /**
- *
- * @author ASUS
+ * Se ejecuta la acción de poder ver los/el término(s) guardado(s).
+ * @author Daniel Gutierrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class AccionVer extends AccionUsuario{
 

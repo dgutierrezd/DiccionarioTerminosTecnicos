@@ -17,8 +17,10 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author dgutierrezd
+ * Vista principal.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class PrincipalView extends javax.swing.JFrame {
 
@@ -98,6 +100,10 @@ public class PrincipalView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Salir del software.
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             glosario.escribirSerializable();
@@ -110,10 +116,18 @@ public class PrincipalView extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Ir a la vista para ver los términos.
+     * @param evt 
+     */
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
         JDialog dialogoVer = new Ver(this, true);  
     }//GEN-LAST:event_btnVerActionPerformed
 
+    /**
+     * Ir a la vista para agregar un término nuevo.
+     * @param evt 
+     */
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         JDialog dialogoAgregar = new Agregar(this, true);
     }//GEN-LAST:event_btnAgregarActionPerformed

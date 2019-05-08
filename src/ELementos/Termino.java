@@ -9,12 +9,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
- * @author ASUS
+ * Término a guardar en las distinas categorias.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class Termino implements Serializable{
+    
+    /**
+     * Expresión o palabra del término.
+     */
     private String expresion;
+    
+    /**
+     * Significado del término.
+     */
     private String significado;
+    
+    /**
+     * ArrayList de las Categorías a las cuales pertenece el término.
+     */
     private ArrayList<Categoria> categorias = new ArrayList<>();
 
     public Termino(String expresion, String significado) {

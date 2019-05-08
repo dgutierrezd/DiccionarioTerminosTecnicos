@@ -21,8 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
- *
- * @author ASUS
+ * Vista para ver los datos de un término en específico.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class VerTermino extends javax.swing.JDialog {
     
@@ -155,11 +157,19 @@ public class VerTermino extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Volver a la vista Ver.
+     * @param evt 
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         JDialog dialogoVer = new Ver(vistaPrincipal, true);    
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    /**
+     * Editar y guardar el término con lso datos determinados.
+     * @param evt 
+     */
     private void btnEditargGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditargGuardarActionPerformed
         String expresionCambiar = txtExpresion.getText();
         String descripcionCambiar = txtDescripcion.getText();
@@ -171,10 +181,17 @@ public class VerTermino extends javax.swing.JDialog {
         habilitarCampos(false);
     }//GEN-LAST:event_btnEditargGuardarActionPerformed
 
+    /**
+     * Se habilita la edición del término.
+     * @param evt 
+     */
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         habilitarCampos(true);
     }//GEN-LAST:event_btnEditarActionPerformed
     
+    /**
+     * Se muestran lso datos del término en la vista.
+     */
     public void actualizarTermino(){
         txtExpresion.setText(termino.obtExpresion());
         txtDescripcion.setText(termino.obtSignificado());

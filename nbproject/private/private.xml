@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Agregar.java</file>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/ELementos/Glosario.java</file>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/VerTermino.java</file>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/LectorGlosarioSerializado.java</file>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/PrincipalView.java</file>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/GUI/Ver.java</file>
-            <file>file:/home/dgutierrezd/NetBeansProjects/DiccionarioTerminosTecnicos/src/IOElements/EscritorGlosarioSerializado.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

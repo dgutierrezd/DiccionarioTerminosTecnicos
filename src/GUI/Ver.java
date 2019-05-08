@@ -19,8 +19,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
- *
- * @author ASUS
+ * Vista para ver los términos guardados.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastian Cordero Ramírez
+ * @since 1.0
  */
 public class Ver extends javax.swing.JDialog {
     private VerTermino verTermino;
@@ -282,10 +284,18 @@ public class Ver extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Volver al menú principal.
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Eliminar el término indicado en la JTable.
+     * @param evt 
+     */
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         estado = 1;
         try {
@@ -300,11 +310,19 @@ public class Ver extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    /**
+     * conocer el término selccionado.
+     * @param evt 
+     */
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         indexRemove = tablaDatos.rowAtPoint(evt.getPoint());
         
     }//GEN-LAST:event_tablaDatosMouseClicked
 
+    /**
+     * Ir a conocer más del término seleccionado.
+     * @param evt 
+     */
     private void btnVerTerminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTerminoActionPerformed
         estado = 2;
         try { 
@@ -325,6 +343,10 @@ public class Ver extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBusquedaActionPerformed
 
+    /**
+     * Se busca el texto indicado en el espacio.
+     * @param evt 
+     */
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         estado = 3;
         try { 
@@ -340,12 +362,20 @@ public class Ver extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    /**
+     * Se selecciona la búsqueda por categorías.
+     * @param evt 
+     */
     private void checkCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCategoriaActionPerformed
         checkGeneral.setSelected(false);
         actualizarTerminos();
         
     }//GEN-LAST:event_checkCategoriaActionPerformed
 
+    /**
+     * Se selecciona para conocer todos los terminos.
+     * @param evt 
+     */
     private void checkGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkGeneralActionPerformed
         checkCategoria.setSelected(false);
         actualizarTerminos();        

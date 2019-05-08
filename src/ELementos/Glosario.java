@@ -25,11 +25,16 @@ import javax.swing.table.DefaultTableModel;
 import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
- *
- * @author dgutierrezd
+ * Clase 'control' donde se define y se implementan distintos métodos.
+ * @author Daniel Gutiérrez Duque
+ * @author Sebastián Cordero Ramírez
+ * @since 1.0
  */
 public class Glosario implements Serializable{
     
+    /**
+     * ArrayList en el cual se guardan los términos.
+     */
     private ArrayList<Termino> terminos = new ArrayList<>();
     
     public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -40,6 +45,14 @@ public class Glosario implements Serializable{
         PrincipalView vistaPrincipal = new PrincipalView(glosario);
     }
     
+    /**
+     * Se determinan las opciones según el estado de la vista Agregar.
+     * @param dialogo Vista agregar.
+     * @param opcion Estado o botón seleccionado.
+     * @param expresion Termino o palabra.
+     * @param significado significado del término.
+     * @param categoria categoría a la cual pertenece la expresión.
+     */
     public void determinarOpcionesAgregar(JDialog dialogo,int opcion,String expresion,String significado,String categoria) throws IOException, ClassNotFoundException{
         switch(opcion){
             case 1:
@@ -62,6 +75,15 @@ public class Glosario implements Serializable{
         }
     }
     
+    /**
+     * Se determinan las opciones según el estado de la vista ver terminos.
+     * @param dialogo Vista agregar.
+     * @param opcion Estado o botón seleccionado.
+     * @param tabla JTable donde se mostrarán los términos.
+     * @param datoRemove Indice de dato seleccionado en la JTable.
+     * @param datoBuscar Dato que se desea buscar.
+     * @return Termino.
+     */
     public Termino determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove,String datoBuscar) throws IOException, FileNotFoundException, ClassNotFoundException {
 
         refrescarDatos(tabla);
@@ -76,7 +98,7 @@ public class Glosario implements Serializable{
             break;
             case 3:
                 for(int i=0;i<terminos.size();i++){
-                    if(terminos.get(i).obtExpresion().equals(datoBuscar)){
+                    if(terminos.get(i).obtExpresion().equalsIgnoreCase(datoBuscar)){
                         termino = terminos.get(i);
                     }
                 }
@@ -85,6 +107,9 @@ public class Glosario implements Serializable{
         return termino;
     }
     
+    /**
+     * Escribir objetos.
+     */
     public void escribirSerializable() throws IOException, ClassNotFoundException {
         Escritor escritorGlosarioSerializado = new EscritorGlosarioSerializado();
         escritorGlosarioSerializado.escribirObjetos(this);
@@ -94,6 +119,10 @@ public class Glosario implements Serializable{
         return terminos;
     }
     
+    /**
+     * Se actualizan los datos y términos guardados en la JTable.
+     * @param tabla JTable donde se muestran los términos.
+     */
     public void refrescarDatos(JTable tabla){
         String[][] matrix = new String[terminos.size()][1];
         for (int i = 0; i < terminos.size(); i++) {
@@ -105,6 +134,13 @@ public class Glosario implements Serializable{
         tabla.setModel(model);
     }
     
+    /**
+     * Se determinan las opciones según el estado de la vista ver termino y editar.
+     * @param termino Termino a mostrar.
+     * @param expresionCambiar Expresion o Palabra del término.
+     * @param descripcionCambiar significado del término.
+     * @param categorias Categoría a la cual pertenece el término.
+     */
     public void determinarOpcionesVerEditar(Termino termino, String expresionCambiar,String descripcionCambiar, ArrayList categorias){
         for (int i = 0; i < terminos.size(); i++) {
             if(terminos.get(i).obtExpresion().equals(termino.obtExpresion())){
@@ -115,6 +151,12 @@ public class Glosario implements Serializable{
             }
         }
     }
+    
+    /**
+     * Se determina la categoría a la cual pertenece un término.
+     * @param categoria Categoria.
+     * @return una clase Categoria.
+     */
     public Categoria determinarCategoria(String categoria){
         Categoria newCategoria = null;
         switch(categoria){
