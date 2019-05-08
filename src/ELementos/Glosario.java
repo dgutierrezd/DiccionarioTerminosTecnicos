@@ -85,8 +85,8 @@ public class Glosario implements Serializable{
      * @return Termino.
      */
     public Termino determinarOpcionesVer(JDialog dialog, int opcion, JTable tabla,int datoRemove,String datoBuscar) throws IOException, FileNotFoundException, ClassNotFoundException {
-
         refrescarDatos(tabla);
+        
         Termino termino = new Termino();
         switch(opcion) {
             case 1:
@@ -94,16 +94,23 @@ public class Glosario implements Serializable{
                 refrescarDatos(tabla);
             break;
             case 2:
+                refrescarDatos(tabla);
                 termino = terminos.get(datoRemove);
+                System.out.println(termino.obtExpresion());
             break;
             case 3:
+                refrescarDatos(tabla);
                 for(int i=0;i<terminos.size();i++){
                     if(terminos.get(i).obtExpresion().equalsIgnoreCase(datoBuscar)){
                         termino = terminos.get(i);
                     }
                 }
             break;
+            case 4:
+                determinarCategoriaTermino(tabla, datoBuscar);
+            break;
         }
+        
         return termino;
     }
     
@@ -127,6 +134,22 @@ public class Glosario implements Serializable{
         String[][] matrix = new String[terminos.size()][1];
         for (int i = 0; i < terminos.size(); i++) {
             matrix[i][0] = terminos.get(i).obtExpresion();
+        }
+        DefaultTableModel model = new javax.swing.table.DefaultTableModel(matrix,new String[]{"Nombre termino:"});
+        DefaultTableCellHeaderRenderer center = new DefaultTableCellHeaderRenderer();
+        tabla.getColumnModel().getColumn(0).setCellRenderer(center);
+        tabla.setModel(model);
+    }
+    public void determinarCategoriaTermino(JTable tabla,String categoria){
+        Categoria newCategoria = determinarCategoria(categoria);
+        int index = determinarTerminosPorCategoria(newCategoria);
+        String[][] matrix = new String[index][1];
+        for (int i = 0; i < index; i++) {
+            for (int j = 0; j < terminos.size(); j++) {
+                if(newCategoria.getClass().getName().equals(terminos.get(j).getCategorias().get(0).getClass().getName())){
+                    matrix[i][0] = terminos.get(j).obtExpresion();
+                }
+            }
         }
         DefaultTableModel model = new javax.swing.table.DefaultTableModel(matrix,new String[]{"Nombre termino:"});
         DefaultTableCellHeaderRenderer center = new DefaultTableCellHeaderRenderer();
@@ -183,5 +206,14 @@ public class Glosario implements Serializable{
             break;
         }
         return newCategoria;
+    }
+    public int determinarTerminosPorCategoria(Categoria categoria){
+        int index=0;
+        for (int i = 0; i < terminos.size(); i++) {
+            if(categoria.getClass().getName().equals(terminos.get(i).getCategorias().get(0).getClass().getName())){
+                index++;
+            }
+        }
+        return index;
     }
 }

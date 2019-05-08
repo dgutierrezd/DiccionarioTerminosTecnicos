@@ -30,6 +30,7 @@ public class Ver extends javax.swing.JDialog {
     private PrincipalView vistaPrincipal;
     private int estado;
     private int indexRemove;
+    private int indexRemoveCategorias;
     private int fila;
     /**
      * Creates new form Ver
@@ -80,6 +81,7 @@ public class Ver extends javax.swing.JDialog {
         txtCategoria = new javax.swing.JComboBox<>();
         tablaDatosPricnipal1 = new javax.swing.JScrollPane();
         tablaDatosCategorias = new javax.swing.JTable();
+        btnAceptar = new javax.swing.JButton();
         tablaDatosPricnipal = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -145,7 +147,7 @@ public class Ver extends javax.swing.JDialog {
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconFinder.png"))); // NOI18N
         btnBuscar.setContentAreaFilled(false);
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -185,6 +187,11 @@ public class Ver extends javax.swing.JDialog {
         txtCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una categoria...", "Sistemas Distribuidos", "Sistemas Embebidos", "Bases de Datos", "Redes", "Programación Orientada a Objetos", "Programación Móvil", "Programación Web" }));
         txtCategoria.setToolTipText("");
         txtCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoriaActionPerformed(evt);
+            }
+        });
 
         tablaDatosPricnipal1.setFocusable(false);
         tablaDatosPricnipal1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -216,6 +223,13 @@ public class Ver extends javax.swing.JDialog {
         });
         tablaDatosPricnipal1.setViewportView(tablaDatosCategorias);
 
+        btnAceptar.setText("jButton2");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tablaCategoriasLayout = new javax.swing.GroupLayout(tablaCategorias);
         tablaCategorias.setLayout(tablaCategoriasLayout);
         tablaCategoriasLayout.setHorizontalGroup(
@@ -228,9 +242,10 @@ public class Ver extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tablaCategoriasLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tablaDatosPricnipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(137, 137, 137))
+                .addGap(143, 143, 143))
         );
         tablaCategoriasLayout.setVerticalGroup(
             tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +255,11 @@ public class Ver extends javax.swing.JDialog {
                     .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tablaDatosPricnipal1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addGroup(tablaCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablaDatosPricnipal1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addGroup(tablaCategoriasLayout.createSequentialGroup()
+                        .addComponent(btnAceptar)
+                        .addGap(0, 228, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -299,8 +318,14 @@ public class Ver extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         estado = 1;
         try {
-            glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove,null);  
-            actualizarTerminos();
+            if(checkCategoria.isSelected()){
+                glosario.determinarOpcionesVer(this, estado, tablaDatosCategorias,indexRemoveCategorias,null);
+                
+            }else{
+                glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove,null);  
+                actualizarTerminos();
+            }
+            
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -316,7 +341,7 @@ public class Ver extends javax.swing.JDialog {
      */
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         indexRemove = tablaDatos.rowAtPoint(evt.getPoint());
-        
+        indexRemoveCategorias = tablaDatosCategorias.rowAtPoint(evt.getPoint());
     }//GEN-LAST:event_tablaDatosMouseClicked
 
     /**
@@ -384,6 +409,21 @@ public class Ver extends javax.swing.JDialog {
     private void tablaDatosCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosCategoriasMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tablaDatosCategoriasMouseClicked
+
+    private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
+        
+    }//GEN-LAST:event_txtCategoriaActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+       estado = 4;
+        try {
+            glosario.determinarOpcionesVer(this, 4, tablaDatosCategorias,0,txtCategoria.getSelectedItem().toString());
+        } catch (IOException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
     public void actualizarTerminos(){
         if(checkCategoria.isSelected()){
             tablaCategorias.setVisible(true);
@@ -411,6 +451,7 @@ public class Ver extends javax.swing.JDialog {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnVerTermino;
