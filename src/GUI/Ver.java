@@ -319,7 +319,7 @@ public class Ver extends javax.swing.JDialog {
         estado = 1;
         try {
             if(checkCategoria.isSelected()){
-                glosario.determinarOpcionesVer(this, estado, tablaDatosCategorias,indexRemoveCategorias,null);
+                glosario.determinarOpcionesVer(this, estado, tablaDatosCategorias,indexRemove,null);
                 
             }else{
                 glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove,null);  
@@ -394,7 +394,6 @@ public class Ver extends javax.swing.JDialog {
     private void checkCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCategoriaActionPerformed
         checkGeneral.setSelected(false);
         actualizarTerminos();
-        
     }//GEN-LAST:event_checkCategoriaActionPerformed
 
     /**
@@ -404,6 +403,7 @@ public class Ver extends javax.swing.JDialog {
     private void checkGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkGeneralActionPerformed
         checkCategoria.setSelected(false);
         actualizarTerminos();        
+        verificarTablaVacia(tablaDatos);
     }//GEN-LAST:event_checkGeneralActionPerformed
 
     private void tablaDatosCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosCategoriasMouseClicked
@@ -417,7 +417,8 @@ public class Ver extends javax.swing.JDialog {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
        estado = 4;
         try {
-            glosario.determinarOpcionesVer(this, 4, tablaDatosCategorias,0,txtCategoria.getSelectedItem().toString());
+            glosario.determinarOpcionesVer(this, 4, tablaDatosCategorias,indexRemoveCategorias,txtCategoria.getSelectedItem().toString());
+            verificarTablaVacia(tablaDatosCategorias);
         } catch (IOException ex) {
             Logger.getLogger(Ver.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -438,6 +439,17 @@ public class Ver extends javax.swing.JDialog {
             tablaDatosPricnipal.setVisible(false);
         }
     }
+    
+    /**
+     * Se verifica si la tabla está vacía.
+     * @param tabla 
+     */
+    public void verificarTablaVacia(JTable tabla) {
+        if(tabla.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "No hay términos para mostrar.");
+        }
+    }
+    
     public JTable getTablaDatos() {
         return tablaDatos;
     }

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import sun.swing.table.DefaultTableCellHeaderRenderer;
@@ -131,6 +132,7 @@ public class Glosario implements Serializable{
      * @param tabla JTable donde se muestran los términos.
      */
     public void refrescarDatos(JTable tabla){
+        
         String[][] matrix = new String[terminos.size()][1];
         for (int i = 0; i < terminos.size(); i++) {
             matrix[i][0] = terminos.get(i).obtExpresion();

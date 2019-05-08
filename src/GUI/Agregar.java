@@ -144,7 +144,7 @@ public class Agregar extends javax.swing.JDialog {
         estado = 1;
         try{
             if(!(txtExpresion.getText().equals("") || txtDescripcion.getText().equals("") || txtCategoria.getSelectedIndex() == 0)){
-                glosario.determinarOpcionesAgregar(this, estado, txtExpresion.getText(), txtDescripcion.getText(), (String) txtCategoria.getSelectedItem());
+                glosario.determinarOpcionesAgregar(this, estado, txtExpresion.getText().trim(), txtDescripcion.getText().trim(), (String) txtCategoria.getSelectedItem());
                 JOptionPane.showMessageDialog(null, "Se ha agregado con éxito.");
                 limpiarTxt();
             }else{
