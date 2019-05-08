@@ -5,6 +5,7 @@
  */
 package ELementos;
 
+import Excepciones.TerminoYaExisteException;
 import GUI.Agregar;
 import GUI.VerTermino;
 import GUI.PrincipalView;
@@ -60,6 +61,11 @@ public class Glosario implements Serializable{
                 Categoria newCategoria = determinarCategoria(categoria);
                 Termino newTermino = new Termino(expresion, significado);                
                 newTermino.getCategorias().add(newCategoria);
+                for(int i = 0; i < terminos.size(); i++) {
+                    if(terminos.get(i).obtExpresion().equalsIgnoreCase(newTermino.obtExpresion())) {
+                        throw new TerminoYaExisteException();
+                    }
+                }
                 this.terminos.add(newTermino);
             break;
             case 2:

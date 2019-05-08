@@ -6,6 +6,7 @@
 package GUI;
 
 import ELementos.Glosario;
+import Excepciones.TerminoYaExisteException;
 import com.sun.awt.AWTUtilities;
 import java.awt.Frame;
 import java.awt.Shape;
@@ -154,6 +155,8 @@ public class Agregar extends javax.swing.JDialog {
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
+        } catch(TerminoYaExisteException tye) {
+            JOptionPane.showMessageDialog(null, "El termino que estas agregando ya existe.");
         }
         
     }//GEN-LAST:event_btnVerActionPerformed
