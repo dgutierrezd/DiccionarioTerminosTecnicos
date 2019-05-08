@@ -320,10 +320,10 @@ public class Ver extends javax.swing.JDialog {
         try {
             if(checkCategoria.isSelected()){
                 glosario.determinarOpcionesVer(this, estado, tablaDatosCategorias,indexRemove,null);
-                
             }else{
                 glosario.determinarOpcionesVer(this, estado, tablaDatos,indexRemove,null);  
                 actualizarTerminos();
+                JOptionPane.showMessageDialog(null, "El término se ha eliminado correctamente.");
             }
             
         } catch (IOException ex) {
