@@ -197,7 +197,7 @@ public class VerTermino extends javax.swing.JDialog {
         txtDescripcion.setText(termino.obtSignificado());
         switch(termino.getCategorias().get(0).getClass().getSimpleName()){
             case "BasesDeDatos":
-                txtCategoria.setSelectedIndex(4);
+                txtCategoria.setSelectedIndex(3);
             break;
             case "ProgramacionMovil":
                 txtCategoria.setSelectedIndex(6);
@@ -209,7 +209,7 @@ public class VerTermino extends javax.swing.JDialog {
                 txtCategoria.setSelectedIndex(7);
             break;
             case "Redes":
-                txtCategoria.setSelectedIndex(3);
+                txtCategoria.setSelectedIndex(4);
             break;
             case "SistemasDistribuidos":
                 txtCategoria.setSelectedIndex(1);
